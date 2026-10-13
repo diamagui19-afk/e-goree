@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Administration | E-Gorée</title>
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/admin-chaloupes.css">
+
+
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+
+<header class="admin-header">
+    <script src="../js/theme.js"></script>
+    <div>
+        <span class="admin-badge">ADMINISTRATION</span>
+        <h1>E-Gorée</h1>
+        <p>Tableau de bord</p>
+    </div>
+
+    <button
+    id="logoutBtn"
+    class="logout-btn"
+    type="button">
+    Déconnexion
+</button>
+</header>
+
+
+<main class="admin-container">
+
+    <!-- STATISTIQUES -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <span>👥</span>
+            <div>
+                <strong id="usersCount">…</strong>
+                <p>Utilisateurs</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>🚢</span>
+            <div>
+                <strong id="departuresCount">…</strong>
+                <p>Départs</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>🎟️</span>
+            <div>
+                <strong id="ticketsCount">…</strong>
+                <p>Billets</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>🔴</span>
+            <div>
+                <strong id="blockedCount">…</strong>
+                <p>Départs bloqués</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="stats-grid stats-grid-extra" aria-label="Billetterie">
+        <div class="stat-card"><span>✅</span><div><strong id="purchasedTicketsCount">…</strong><p>Billets achetés</p></div></div>
+        <div class="stat-card"><span>↩️</span><div><strong id="cancelledTicketsCount">…</strong><p>Billets annulés</p></div></div>
+        <div class="stat-card"><span>⏳</span><div><strong id="pendingCancellationCount">…</strong><p>Demandes à traiter</p></div></div>
+    </section>
+    <p id="statsStatus" class="admin-stats-status" role="status" aria-live="polite">Chargement des statistiques…</p>
+
+
+    <!-- MENU ADMIN -->
+
+    <section class="admin-menu">
+
+        <h2>Gestion</h2>
+
+        <div class="admin-actions">
+
+            <button onclick="location.href='admin-departs.html'">
+                🚢
+                <span>
+                    <strong>Planning des départs</strong>
+                    <small>Créer, modifier, bloquer ou réactiver un horaire</small>
+                </span>
+            </button>
+
+            <button onclick="location.href='admin-users.html'">
+                👥
+                <span>
+                    <strong>Utilisateurs</strong>
+                    <small>Voir les utilisateurs E-Gorée</small>
+                </span>
+            </button>
+
+            <button onclick="location.href='admin-chaloupes.html'">
+                🎟️
+                <span>
+                    <strong>Billets des chaloupes</strong>
+                    <small>Voir les achats et traiter les demandes d’annulation</small>
+                </span>
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- MESSAGE -->
+
+    <section class="admin-info">
+
+        <h2>Bienvenue administrateur 👋</h2>
+
+        <p>
+            Depuis cet espace, vous pouvez gérer les départs de
+            chaloupe, contrôler les disponibilités et administrer
+            les utilisateurs d'E-Gorée.
+        </p>
+
+    </section>
+
+</main>
+
+<script src="../js/i18n.js"></script>
+<script type="module" src="../js/admin.js"></script>
+<script type="module" src="../js/admin-guard.js"></script>
+
+</body>
+
+</html>

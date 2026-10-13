@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billets - E-Gorée</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/tickets.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <div class="billet-header">
+        <h1>Billet Chaloupe</h1>
+        <button class="link-btn" onclick="showBilletView('history')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 15,14"/></svg>
+            Historique
+        </button>
+    </div>
+
+    <div class="scroll-area">
+
+        <!-- ============ ACHAT ============ -->
+        <div id="billet-purchase">
+
+            <div class="card">
+
+                <div class="field">
+                    <label>Traversée Dakar - Gorée</label>
+                    <p class="hint">Réservez votre voyage vers l'île historique.</p>
+                </div>
+
+                <div class="row2">
+                    <div class="field">
+                        <label>Adultes (5000 F)</label>
+                        <div class="qty-control">
+                            <button onclick="changeQty('adult',-1)">–</button>
+                            <span id="adultNumber">1</span>
+                            <button onclick="changeQty('adult',1)">+</button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Enfants (2500 F)</label>
+                        <div class="qty-control">
+                            <button onclick="changeQty('child',-1)">–</button>
+                            <span id="childNumber">0</span>
+                            <button onclick="changeQty('child',1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Mode de paiement</label>
+                    <div class="pay-methods" id="pay-methods">
+                        <div class="pay-chip active" data-pay="Orange Money">Orange Money</div>
+                        <div class="pay-chip" data-pay="Wave">Wave</div>
+                        <div class="pay-chip" data-pay="Carte bancaire">Carte bancaire</div>
+                    </div>
+                </div>
+
+                <div class="price-total"><span>Total</span><span id="total">5 000 F CFA</span></div>
+
+                <button class="btn-primary" style="margin-top:14px;" onclick="reserve()">Réserver maintenant</button>
+            </div>
+
+            <div id="new-ticket-slot"></div>
+
+        </div>
+
+        <!-- ============ HISTORIQUE ============ -->
+        <div id="billet-history" style="display:none;">
+            <div style="padding:0 20px 8px;">
+                <button class="btn-ghost" onclick="showBilletView('purchase')">← Nouveau billet</button>
+            </div>
+            <div id="history-list"></div>
+        </div>
+
+    </div>
+
+    <!-- ================= NAVIGATION ================= -->
+    <div id="navbar"></div>
+
+    <script src="../js/navbar-loader.js"></script>
+    <script src="../js/i18n.js"></script>
+
+    <script>
+    /* ---------------- Ticket logic ---------------- */
+    let adults = 1;
+    let children = 0;
+    const adultPrice = 5000;
+    const childPrice = 2500;
+
+    function update(){
+        document.getElementById('adultNumber').textContent = adults;
+        document.getElementById('childNumber').textContent = children;
+        const totalNum = (adults*adultPrice) + (children*childPrice);
+        document.getElementById('total').textContent = totalNum.toLocaleString('fr-FR') + ' F CFA';
+    }
+    function changeQty(type, delta){
+        if(type==='adult'){
+            adults = Math.max(1, adults+delta);
+        } else {
+            children = Math.max(0, children+delta);
+        }
+        update();
+    }
+
+    let selectedPay = 'Orange Money';
+    const payWrap = document.getElementById('pay-methods');
+    if(payWrap){
+        payWrap.addEventListener('click', e=>{
+            const chip = e.target.closest('.pay-chip');
+            if(!chip) return;
+            document.querySelectorAll('.pay-chip').forEach(c=>c.classList.remove('active'));
+            chip.classList.add('active');
+            selectedPay = chip.dataset.pay;
+        });
+    }
+
+    let ticketHistory = [];
+    function qrGrid(seed){
+        let cells = '';
+        let s = seed;
+        for(let i=0;i<36;i++){
+            s = (s*9301+49297)%233280;
+            const on = (s/233280) > 0.42;
+            cells += `<i class="${on?'':'off'}"></i>`;
+        }
+        return cells;
+    }
+
+    function reserve(){
+        const date = document.getElementById('date') ? document.getElementById('date').value : '';
+        const totalNum = (adults*adultPrice) + (children*childPrice);
+        const ticket = {
+            id: 'GR-'+Math.random().toString(36).slice(2,8).toUpperCase(),
+            date: date || new Date().toISOString().slice(0,10),
+            route:"Dakar → Gorée",
+            depart:"—", arrivee:"—",
+            adult:adults, child:children, total:totalNum, pay:selectedPay
+        };
+        ticketHistory.unshift(ticket);
+        renderNewTicket(ticket);
+        renderHistory();
+        alert("Réservation créée ✅\n\nTotal : " + totalNum.toLocaleString('fr-FR') + " F CFA");
+    }
+
+    function renderNewTicket(t){
+        const type = t.adult && t.child ? `${t.adult} adulte(s) · ${t.child} enfant(s)` : (t.adult? `${t.adult} adulte(s)` : `${t.child} enfant(s)`);
+        const slot = document.getElementById('new-ticket-slot');
+        if(!slot) return;
+        slot.innerHTML = `
+            <div class="ticket-stub">
+            <div class="ticket-top">
+                <div class="route">${t.route}</div>
+                <div class="sub">Billet n° ${t.id} · payé via ${t.pay}</div>
+            </div>
+            <div class="ticket-perforation"></div>
+            <div class="ticket-body">
+                <div class="ticket-details">
+                <div><div class="lab">Date</div><div class="val">${t.date}</div></div>
+                <div><div class="lab">Passagers</div><div class="val" style="font-family:var(--font); font-size:11.5px;">${type}</div></div>
+                <div><div class="lab">Trajet</div><div class="val">${t.route}</div></div>
+                <div><div class="lab">Prix</div><div class="val">${t.total.toLocaleString('fr-FR')} F</div></div>
+                </div>
+                <div class="qr">${qrGrid(t.date.length*31+t.total)}</div>
+            </div>
+            </div>`;
+    }
+
+    function renderHistory(){
+        const list = document.getElementById('history-list');
+        if(!list) return;
+        if(ticketHistory.length===0){
+            list.innerHTML = `<div class="map-info" style="margin:14px 20px;">Aucun billet acheté pour l'instant.</div>`;
+            return;
+        }
+        list.innerHTML = ticketHistory.map(t=>`
+            <div class="history-item">
+            <div class="ic">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="10" rx="2"/></svg>
+            </div>
+            <div class="txt">
+                <div class="r">${t.route}</div>
+                <div class="m">${t.date} · ${t.adult} ad. ${t.child} enf.</div>
+            </div>
+            <div class="p">${t.total.toLocaleString('fr-FR')} F</div>
+            </div>`).join('');
+    }
+
+    function showBilletView(view){
+        document.getElementById('billet-purchase').style.display = view==='purchase' ? 'block':'none';
+        document.getElementById('billet-history').style.display = view==='history' ? 'block':'none';
+        if(view==='history') renderHistory();
+    }
+
+    update();
+    </script>
+
+</body>
+
+</html>

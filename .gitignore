@@ -1,0 +1,23 @@
+node_modules
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+backend/j.json
+backend/serviceAccountKey*.json
+**/google-services*.json
+*.jks
+*.keystore
+
+# Generated Android build files
+android/.gradle/
+android/**/build/
+.idea/
+
+# Project-specific deployment details kept local
+/firestore.rules
+/2026_08_18_api_documentation_6bcff89aa3.json
+/capacitor.config.json

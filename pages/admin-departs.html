@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/theme.js"></script>
+    <title>Gestion des départs | E-Gorée</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin-departs.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div>
+            <span class="eyebrow">E-Gorée · Administration</span>
+            <h1>Gestion des départs</h1>
+            <p>Programmez et gérez les horaires des chaloupes.</p>
+        </div>
+        <a class="logout-btn" href="admin.html">← Retour au tableau de bord</a>
+    </header>
+
+    <main class="admin-container">
+        <section class="admin-card">
+            <div class="card-header">
+                <div>
+                    <span class="section-label">Planning</span>
+                    <h2>Générer les horaires officiels</h2>
+                </div>
+            </div>
+            <form id="departureForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="departureDate">Date du planning</label>
+                        <input type="date" id="departureDate" required>
+                    </div>
+                    <div class="field">
+                        <label for="departurePlaces">Places par départ</label>
+                        <input type="number" id="departurePlaces" min="1" value="100" required>
+                    </div>
+                </div>
+                <div id="formMessage" class="form-message" role="status"></div>
+                <button type="submit" class="primary-btn" id="saveDepartureBtn">Générer les départs officiels</button>
+            </form>
+        </section>
+
+        <section class="admin-card">
+            <div class="card-header">
+                <div>
+                    <span class="section-label">Programme</span>
+                    <h2>Départs programmés</h2>
+                </div>
+                <span id="departureCount" class="count-badge">0 départ</span>
+            </div>
+
+            <div id="departuresList" class="departures-list">
+                <div class="loading">Chargement des départs…</div>
+            </div>
+        </section>
+    </main>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <button id="closeModal" class="close-btn" type="button" aria-label="Fermer">×</button>
+            <span class="section-label">Modification</span>
+            <h2>Modifier le départ</h2>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                <div class="field">
+                    <label for="editDate">Date du départ</label>
+                    <input type="date" id="editDate" required>
+                </div>
+                <div class="field">
+                    <label for="editTime">Heure</label>
+                    <input type="time" id="editTime" step="900" required>
+                </div>
+                <div class="field">
+                    <label for="editPlaces">Nombre de places</label>
+                    <input type="number" id="editPlaces" min="1" required>
+                </div>
+                <div id="editMessage" class="form-message" role="status"></div>
+                <button type="submit" class="primary-btn">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/i18n.js"></script>
+    <script type="module" src="../js/admin-departs.js"></script>
+    <script type="module" src="../js/admin-guard.js"></script>
+</body>
+</html>

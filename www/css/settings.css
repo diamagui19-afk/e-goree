@@ -1,0 +1,207 @@
+* { box-sizing: border-box; }
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: var(--background, #f8f5f0);
+    color: var(--ink);
+    font-family: var(--font, "Work Sans", sans-serif);
+}
+
+.topbar {
+    width: 100%;
+    max-width: 620px;
+    margin-inline: auto;
+    padding: 22px 20px 12px;
+}
+
+.topbar h1 {
+    margin: 0;
+    color: var(--primary-dark);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(24px, 5vw, 30px);
+}
+
+.scroll-area {
+    width: 100%;
+    max-width: 620px;
+    flex: 1 1 auto;
+    margin-inline: auto;
+    overflow-y: auto;
+    padding: 0 0 calc(112px + env(safe-area-inset-bottom, 0px));
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.scroll-area::-webkit-scrollbar { display: none; }
+
+.profile-card {
+    margin: 8px 20px 22px;
+    padding: 24px 18px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: linear-gradient(145deg, #fffdf9, #f4eadc);
+    box-shadow: 0 9px 25px rgba(24, 59, 42, .08);
+    text-align: center;
+}
+
+.avatar {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 12px;
+    display: grid;
+    place-items: center;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 4px 14px rgba(0, 109, 119, .2);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.profile-card .name {
+    color: var(--ink);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.profile-card .mail {
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+    color: var(--ink-soft);
+    font-size: 13px;
+}
+
+.settings-group {
+    margin: 0 20px 18px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--surface);
+    box-shadow: 0 5px 18px rgba(24, 59, 42, .05);
+}
+
+.glabel {
+    padding: 14px 16px 9px;
+    color: var(--ink-soft);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.lang-row {
+    display: flex;
+    gap: 8px;
+    padding: 6px 14px 14px;
+}
+
+.lang-chip {
+    min-width: 54px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+}
+
+.lang-chip.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #fff;
+}
+
+.setting-row {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 14px;
+}
+
+.setting-row.clickable { cursor: pointer; }
+.setting-row.clickable:active { background: var(--surface-2); }
+
+.setting-row .l {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.setting-row .l svg {
+    flex: 0 0 20px;
+    color: var(--primary);
+}
+
+#adminAccessRow {
+    background: #f8eee2;
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.switch {
+    width: 44px;
+    height: 25px;
+    padding: 3px;
+    border-radius: 99px;
+    background: #cbd4ce;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.switch i {
+    width: 19px;
+    height: 19px;
+    display: block;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+    transition: transform .2s ease;
+}
+
+.switch.on { background: var(--primary); }
+.switch.on i { transform: translateX(19px); }
+
+.btn-logout {
+    width: calc(100% - 28px);
+    min-height: 46px;
+    margin: 12px 14px 14px;
+    border: 1px solid #f1d8d0;
+    border-radius: 12px;
+    background: #fff8f6;
+    color: #a33d2f;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+:root[data-theme="dark"] .profile-card { background: linear-gradient(145deg, var(--surface), var(--surface-2)); }
+:root[data-theme="dark"] .lang-chip { background: var(--surface); }
+:root[data-theme="dark"] #adminAccessRow { background: var(--surface-2); }
+
+@media (max-width: 480px) {
+    .topbar { padding: 17px 15px 10px; }
+    .profile-card { margin-inline: 14px; }
+    .settings-group { margin-inline: 14px; }
+}

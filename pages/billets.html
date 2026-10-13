@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billets - E-Gorée</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/billets.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <style>
+        .availability-message {
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+        }
+
+        .availability-message.ok {
+            display: block;
+            background: #e8f7ed;
+            color: #247a43;
+        }
+
+        .availability-message.error {
+            display: block;
+            background: #fdeaea;
+            color: #b42318;
+        }
+
+        .availability-message.warning {
+            display: block;
+            background: #fff4d6;
+            color: #8a5a00;
+        }
+
+        .blocked-option {
+            color: #999;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .booking-summary {
+            margin-top: 15px;
+            padding: 14px;
+            border-radius: 12px;
+            background: var(--surface, #f7f4ed);
+        }
+
+        .booking-summary p {
+            margin: 5px 0;
+        }
+
+        .btn-primary:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .empty-history {
+            padding: 20px;
+            text-align: center;
+            color: var(--ink-soft, #777);
+        }
+    </style>
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="billet-header">
+        <h1>Billets</h1>
+
+        <button class="link-btn" id="historyBtn">
+            ⏱ Historique
+        </button>
+    </div>
+
+
+    <div class="scroll-area">
+
+        <!-- ================= ACHAT ================= -->
+
+        <div id="billet-purchase">
+
+            <div class="card">
+
+                <!-- DATE -->
+                <div class="field">
+
+                    <label for="bl-date">
+                        📅 Date du voyage
+                    </label>
+
+                    <input
+                        type="date"
+                        id="bl-date"
+                    >
+
+                </div>
+
+
+                <!-- TRAJET -->
+                <div class="field">
+
+                    <label for="bl-depart">
+                        🚢 Trajet
+                    </label>
+
+                    <select id="bl-depart">
+
+                        <option value="Dakar → Gorée">
+                            Dakar → Gorée
+                        </option>
+
+                        <option value="Gorée → Dakar">
+                            Gorée → Dakar
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- HEURE -->
+                <div class="field">
+
+                    <label for="bl-heure">
+                        🕐 Heure de départ
+                    </label>
+
+                    <select id="bl-heure" disabled>
+                        <option value="">Choisissez d’abord une date</option>
+                    </select>
+
+                    <div
+                        id="availability-message"
+                        class="availability-message">
+                    </div>
+
+                </div>
+                <div class="field tariff-field">
+                    <label for="tariff-category">Cat&#233;gorie tarifaire</label>
+                    <select id="tariff-category" required>
+                        <option value="">Choisir une cat&#233;gorie</option>
+                        <option value="senegalese_resident">S&#233;n&#233;galais r&#233;sident</option>
+                        <option value="resident_africa">R&#233;sident &#233;tranger</option>
+                        <option value="non_resident_africa">Non-r&#233;sident</option>
+                    </select>
+                    <p class="hint">Choisis le tarif applicable &#224; ce billet. Un justificatif peut &#234;tre demand&#233; lors du contr&#244;le.</p>
+                </div>
+
+                <!-- PASSAGERS -->
+                <div class="row2">
+
+                    <div class="field">
+
+                        <label>
+                            Adultes
+                            <br>
+                            <small>
+    <span id="adult-price">5 200</span> F
+</small>
+                        </label>
+
+                        <div class="qty-control">
+
+                            <button
+                                type="button"
+                                onclick="changeQty('adult', -1)">
+                                −
+                            </button>
+
+                            <span id="qty-adult">
+                                1
+                            </span>
+
+                            <button
+                                type="button"
+                                onclick="changeQty('adult', 1)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Enfants
+                            <br>
+                            <small>
+    <span id="child-price">2 700</span> F
+</small>
+                        </label>
+
+                        <div class="qty-control">
+
+                            <button
+                                type="button"
+                                onclick="changeQty('child', -1)">
+                                −
+                            </button>
+
+                            <span id="qty-child">
+                                0
+                            </span>
+
+                            <button
+                                type="button"
+                                onclick="changeQty('child', 1)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAIEMENT -->
+                <div class="field">
+
+                    <label>
+                        💳 Mode de paiement
+                    </label>
+
+                    <div
+                        class="pay-methods"
+                        id="pay-methods">
+
+                        <div
+                            class="pay-chip active"
+                            data-pay="Orange Money">
+                            Orange Money
+                        </div>
+
+                        <div
+                            class="pay-chip"
+                            data-pay="Wave">
+                            Wave
+                        </div>
+
+                        <div
+                            class="pay-chip"
+                            data-pay="Carte bancaire">
+                            Carte bancaire
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RÉSUMÉ -->
+                <div class="booking-summary">
+
+                    <p>
+                        📅
+                        <strong>Date :</strong>
+                        <span id="summary-date">
+                            —
+                        </span>
+                    </p>
+
+                    <p>
+                        🚢
+                        <strong>Trajet :</strong>
+                        <span id="summary-route">
+                            Dakar → Gorée
+                        </span>
+                    </p>
+
+                    <p>
+                        🕐
+                        <strong>Départ :</strong>
+                        <span id="summary-time">
+                            —
+                        </span>
+                    </p>
+
+                </div>
+
+
+                <!-- PRIX -->
+                <div class="price-line">
+
+                    <span>
+                        Sous-total
+                    </span>
+
+                    <span id="price-sub">
+                        5 200 F
+                    </span>
+
+                </div>
+
+
+                <div class="price-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span id="price-total">
+                        5 200 F CFA
+                    </span>
+
+                </div>
+
+
+                <!-- BOUTON -->
+                <button
+                    id="buy-ticket-btn"
+                    class="btn-primary"
+                    style="margin-top:14px;"
+                    disabled>
+
+                    Payer et générer le billet
+
+                </button>
+
+            </div>
+
+
+            <!-- NOUVEAU BILLET -->
+            <div id="new-ticket-slot"></div>
+
+        </div>
+
+
+        <!-- ================= HISTORIQUE ================= -->
+
+        <div
+            id="billet-history"
+            style="display:none;">
+
+            <div style="padding:0 20px 8px;">
+
+                <button
+                    class="btn-ghost"
+                    id="new-ticket-btn">
+
+                    ← Nouveau billet
+
+                </button>
+
+            </div>
+
+            <div id="history-list"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div id="navbar"></div>
+
+
+    <script src="../js/navbar-loader.js"></script>
+    <script src="../js/i18n.js"></script>
+
+    <!-- IMPORTANT : module Firebase -->
+    <script
+        type="module"
+        src="../js/billets.js">
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</body>
+
+</html>

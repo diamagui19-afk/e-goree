@@ -1,0 +1,865 @@
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+
+}
+
+body{
+
+background:#f8f6f1;
+
+padding-bottom:80px;
+
+}
+
+.top{
+
+height:75px;
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:20px;
+
+background:white;
+
+box-shadow:0 3px 15px rgba(0,0,0,.08);
+
+}
+
+.top a{
+
+text-decoration:none;
+
+color:#143642;
+
+}
+
+.top ion-icon{
+
+font-size:28px;
+
+}
+
+.top h1{
+
+font-size:22px;
+
+color:#143642;
+
+}
+
+#map{
+
+width:100%;
+
+height:calc(100vh - 75px - 80px);
+
+}
+
+.map-api-error {
+    max-width: 32rem;
+    margin: 2rem auto;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: #fff3e0;
+    color: #743d16;
+    text-align: center;
+}
+
+.leaflet-popup-content h3{
+
+margin-bottom:8px;
+
+color:#143642;
+
+}
+
+.popup-btn{
+
+background:#C69B5F;
+
+color:white;
+
+border:none;
+
+padding:10px 18px;
+
+border-radius:15px;
+
+cursor:pointer;
+
+margin-top:10px;
+
+}
+
+.popup-btn:hover{
+
+background:#ad834b;
+
+}
+/* ======================================================
+   PANNEAU ITINÉRAIRE
+====================================================== */
+
+.route-panel {
+    position: absolute;
+    z-index: 1000;
+
+    top: 85px;
+    left: 20px;
+
+    width: 330px;
+
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.18);
+
+    box-sizing: border-box;
+}
+
+
+.route-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+
+.route-title span {
+    font-size: 24px;
+}
+
+
+.route-title strong {
+    display: block;
+
+    font-size: 15px;
+}
+
+
+.route-title small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+.route-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.route-field select {
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    background: white;
+
+    font-size: 13px;
+
+    box-sizing: border-box;
+}
+
+
+.route-actions {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+
+.route-btn {
+    flex: 1;
+
+    padding: 10px 8px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #f1f1f1;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.route-btn.primary {
+    background: #176b45;
+
+    color: white;
+}
+
+
+.route-btn:hover {
+    opacity: .88;
+}
+
+
+.clear-route {
+    width: 100%;
+
+    margin-top: 9px;
+
+    padding: 8px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #777;
+
+    cursor: pointer;
+
+    font-size: 12px;
+}
+
+
+.route-info {
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.route-result {
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: #f4f7f4;
+}
+
+
+.route-result strong {
+    display: block;
+
+    margin-bottom: 8px;
+}
+
+
+.route-result > div {
+    margin: 5px 0;
+}
+
+
+.route-stats {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 10px !important;
+
+    font-weight: 600;
+}
+
+/* ---------- Site grid ---------- */
+.site-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap:clamp(12px, 2vw, 24px); padding:2px 20px 20px;}
+.site-card{
+    border-radius:16px; overflow:hidden; background:var(--surface);
+    box-shadow:var(--shadow); border:1px solid var(--line); cursor:pointer;
+}
+.site-card .art{ height:116px;  }
+.site-card .cap{ padding:8px 10px; font-size:11.5px; font-weight:600; color:var(--ink);}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .route-panel {
+
+        top: 75px;
+
+        left: 10px;
+
+        right: 10px;
+
+        width: auto;
+
+        padding: 14px;
+
+    }
+
+}
+/* ======================================================
+   🧭 PANNEAU ITINÉRAIRE
+   ====================================================== */
+
+#route-panel {
+    box-sizing: border-box;
+}
+
+.route-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.route-panel-header strong {
+    display: block;
+    font-size: 18px;
+    color: #1f6b4f;
+}
+
+.route-panel-header span {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #777;
+}
+
+#close-route-panel {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f1f1;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.route-field {
+    margin-bottom: 12px;
+}
+
+.route-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+}
+
+.route-field select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 13px;
+    outline: none;
+}
+
+.route-field select:focus {
+    border-color: #1f6b4f;
+}
+
+.route-switch {
+    display: flex;
+    justify-content: center;
+    margin: -3px 0 7px;
+}
+
+#swap-route {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: #edf5f1;
+    color: #1f6b4f;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.route-mode {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.route-mode-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.route-mode-btn.active {
+    border-color: #1f6b4f;
+    background: #edf5f1;
+    color: #1f6b4f;
+    font-weight: 600;
+}
+
+.calculate-route-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    background: #1f6b4f;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.calculate-route-btn:hover {
+    opacity: .92;
+}
+#route-panel {
+    position: fixed;
+    left: 50%;
+    bottom: 85px;
+
+    transform: translateX(-50%);
+
+    width: min(92%, 420px);
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, .18);
+
+    z-index: 1000;
+}
+
+.route-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    font-size: 18px;
+}
+
+#close-route-panel {
+    border: none;
+
+    background: transparent;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.route-field {
+    margin-bottom: 12px;
+}
+
+.route-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+
+    color: #777;
+}
+
+.route-field select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    background: white;
+
+    font-size: 14px;
+}
+
+.route-btn,
+.navigation-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.route-btn {
+    background: #176b4d;
+
+    color: white;
+}
+
+.navigation-btn {
+    margin-top: 12px;
+
+    background: #1f7ae0;
+
+    color: white;
+}
+
+.route-result {
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #eee;
+
+    font-size: 14px;
+}
+
+#route-distance {
+    font-size: 20px;
+}
+
+#route-duration {
+    color: #666;
+}
+/* ======================================================
+   🧭 BOUTON ITINÉRAIRE FIXE
+   ====================================================== */
+
+.open-route-btn {
+
+    position: fixed;
+
+    right: 18px;
+
+    bottom: 90px;
+
+    z-index: 2000;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    padding: 13px 18px;
+
+    background: #176b4d;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, .22);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.open-route-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, .25);
+
+}
+
+
+/* ======================================================
+   🧭 PANNEAU ITINÉRAIRE
+   ====================================================== */
+
+.route-panel {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 85px;
+
+    transform: translateX(-50%);
+
+    width: min(
+        calc(100% - 30px),
+        430px
+    );
+
+    z-index: 3000;
+
+    padding: 18px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, .22);
+
+}
+
+
+/* HEADER */
+
+.route-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+
+}
+
+
+.route-header strong {
+
+    display: block;
+
+    font-size: 18px;
+
+}
+
+
+.route-header small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+.route-close {
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f1f1;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+}
+
+
+/* CHAMPS */
+
+.route-field {
+
+    margin-bottom: 14px;
+
+}
+
+
+.route-field label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.route-field select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 11px;
+
+    background: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.route-field select:focus {
+
+    border-color: #176b4d;
+
+}
+
+
+/* BOUTON CALCUL */
+
+.route-calculate-btn {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #176b4d;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* RÉSULTAT */
+
+.route-result {
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #eee;
+
+}
+
+
+.route-info {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+#route-distance {
+
+    font-size: 20px;
+
+}
+
+
+#route-duration {
+
+    color: #666;
+
+}
+
+
+/* NAVIGATION */
+
+.navigation-btn {
+
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #1976d2;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .open-route-btn {
+
+        right: 15px;
+
+        bottom: 85px;
+
+        padding: 12px 15px;
+
+    }
+
+}

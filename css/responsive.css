@@ -1,0 +1,302 @@
+/* Shared layout safeguards for phones, tablets and desktop browsers. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+    max-width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow-x: hidden;
+}
+
+/* Keep the final content reachable above the fixed app/Android navigation. */
+.scroll-area {
+    padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
+}
+
+img,
+picture,
+video,
+canvas,
+iframe {
+    max-width: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+}
+
+input,
+select,
+textarea {
+    min-width: 0;
+}
+
+/* Keep long names, emails and identifiers inside their cards. */
+.profile-card .mail,
+.profile-hero .pf-mail,
+.setting-row .l,
+.history-item .txt,
+.ticket-details .val,
+.users-table td,
+.departure-info,
+.departure-actions {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Authentication cards stay centered and can scroll on short screens. */
+.login-page {
+    display: block;
+    min-height: 100vh;
+    min-height: 100svh;
+    height: auto;
+    padding: env(safe-area-inset-top, 0px) 0
+        env(safe-area-inset-bottom, 0px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.login-card {
+    top: auto;
+    left: auto;
+    transform: none;
+    width: min(100%, 440px);
+    min-height: 0;
+    margin: -48px auto 24px;
+    padding: clamp(22px, 5vw, 38px) clamp(18px, 5vw, 28px);
+}
+
+.login-card h1 {
+    font-size: clamp(27px, 7vw, 34px);
+    overflow-wrap: anywhere;
+}
+
+.login-card .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+}
+
+/* Shared app navigation and safe areas for notched phones. */
+.bottom-nav {
+    height: calc(75px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+}
+
+.bottom-nav a {
+    min-width: 0;
+    padding-inline: 2px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+}
+
+/* The map controls remain usable on short and narrow displays. */
+#map {
+    height: calc(100vh - 75px - 80px);
+    height: calc(100dvh - 75px - 80px);
+    min-height: 260px;
+}
+
+#route-panel {
+    width: min(92vw, 420px);
+    max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 110px - env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.open-route-btn {
+    bottom: calc(85px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Avoid fixed-width content and preserve readable spacing on phones. */
+@media (max-width: 700px) {
+    .topbar,
+    .billet-header,
+    .top,
+    .help-header {
+        gap: 10px;
+        padding-left: clamp(12px, 4vw, 20px);
+        padding-right: clamp(12px, 4vw, 20px);
+    }
+
+    .topbar > img {
+        width: auto;
+        height: clamp(36px, 11vw, 50px) !important;
+    }
+
+    .settings-group,
+    .profile-card,
+    .profile-hero,
+    .card,
+    .ticket-stub,
+    .history-item,
+    .map-info {
+        margin-left: clamp(12px, 4vw, 20px);
+        margin-right: clamp(12px, 4vw, 20px);
+    }
+
+    .admin-header {
+        padding-left: clamp(16px, 5vw, 25px);
+        padding-right: clamp(16px, 5vw, 25px);
+    }
+
+    .admin-container {
+        width: calc(100% - 24px);
+        margin: 24px auto;
+    }
+
+    .admin-card {
+        padding: clamp(14px, 4vw, 25px);
+    }
+
+    .card-header,
+    .users-heading,
+    .users-toolbar {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .departure-item,
+    .departure-info {
+        width: 100%;
+    }
+
+    .departure-actions {
+        width: 100%;
+    }
+
+    .departure-actions button {
+        flex: 1 1 auto;
+        min-height: 42px;
+    }
+
+    .route-panel {
+        left: 12px;
+        right: 12px;
+        bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        max-width: none;
+        transform: none;
+        padding: clamp(14px, 4vw, 18px);
+    }
+}
+
+@media (max-width: 480px) {
+    .splash-container {
+        width: min(100%, 420px);
+        padding: 1.5rem 1rem;
+    }
+
+    .logo {
+        width: min(100%, 320px);
+        height: auto;
+    }
+
+    .splash-container p {
+        font-size: clamp(15px, 4.5vw, 18px);
+        line-height: 1.5;
+    }
+
+    .row2 {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ticket-body {
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+
+    .ticket-details {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ticket-details .val {
+        overflow-wrap: anywhere;
+    }
+
+    .ticket-body {
+        align-items: center;
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .ticket-body .qr {
+        margin-inline: auto;
+    }
+
+    .qr {
+        width: clamp(88px, 28vw, 112px);
+    }
+
+    .qr canvas,
+    .qr img {
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100%;
+    }
+
+    .lang-row {
+        gap: 6px;
+    }
+
+    .lang-chip {
+        padding: 9px 6px;
+        font-size: 12px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .bottom-nav a {
+        font-size: 9px;
+    }
+
+    .icon-group {
+        gap: 6px;
+    }
+
+    .icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .route-panel {
+        left: 8px;
+        right: 8px;
+    }
+}
+
+@media (min-width: 768px) {
+    .scroll-area {
+        width: min(100%, 760px);
+        margin-inline: auto;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte | E-Gorée</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <div class="login-card">
+
+        <h1>Créer un <span>compte</span></h1>
+
+        <p class="subtitle">
+            Rejoignez E-Gorée et commencez votre aventure culturelle.
+        </p>
+
+        <div class="input-box">
+            <ion-icon name="person-outline"></ion-icon>
+            <input type="text" id="fullName" placeholder="Nom complet" maxlength="60">
+        </div>
+
+        <div class="input-box">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" id="email" placeholder="Adresse e-mail">
+        </div>
+<div class="input-box">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="password" placeholder="Mot de passe">
+        </div>
+
+        <div class="input-box">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe">
+        </div>
+
+       <div class="checkbox-row">
+
+    <input
+        type="checkbox"
+        id="acceptTerms"
+    >
+
+    <span>
+        J’accepte les
+        <a
+            href="conditions.html"
+            target="_blank"
+            rel="noopener noreferrer">
+            Conditions d’utilisation
+        </a>
+        et la
+        <a
+            href="confidentialite.html"
+            target="_blank"
+            rel="noopener noreferrer">
+            Politique de confidentialité
+        </a>
+    </span>
+
+</div>
+
+       <button class="login-btn" id="registerBtn" type="button">
+            <ion-icon name="person-add-outline"></ion-icon>
+            Créer mon compte
+        </button>
+
+        <p class="register">
+            Déjà un compte ?
+            <a href="login.html">Se connecter</a>
+        </p>
+
+    </div>
+
+</div>
+<script src="../js/i18n.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script type="module" src="../js/register.js"></script>
+</body>
+
+</html>

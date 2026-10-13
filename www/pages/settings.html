@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paramètres - E-Gorée</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/settings.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+    <!-- ================= TOP BAR ================= -->
+
+    <div class="topbar">
+
+        <h1 data-i18n="settingsTitle">
+            Paramètres
+        </h1>
+
+    </div>
+
+
+    <div class="scroll-area">
+
+        <!-- ================= PROFIL ================= -->
+
+        <div class="profile-card">
+
+            <div
+                class="avatar"
+                id="profileAvatar">
+                --
+            </div>
+
+            <div
+                class="name"
+                id="profileName">
+                Chargement...
+            </div>
+
+            <div
+                class="mail"
+                id="profileEmail">
+                Chargement...
+            </div>
+
+        </div>
+
+
+        <!-- ================= LANGUE ================= -->
+
+        <div class="settings-group">
+
+            <div
+                class="glabel"
+                data-i18n="language">
+                Langue
+            </div>
+
+            <div class="lang-row">
+
+                <div
+                    class="lang-chip active"
+                    data-lang="fr"
+                    onclick="setLang('fr')">
+
+                    FR
+
+                </div>
+
+
+                <div
+                    class="lang-chip"
+                    data-lang="en"
+                    onclick="setLang('en')">
+
+                    EN
+
+                </div>
+
+
+                <div
+                    class="lang-chip"
+                    data-lang="wo"
+                    onclick="setLang('wo')">
+
+                    Wolof
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= AFFICHAGE ================= -->
+
+        <div class="settings-group">
+
+            <div
+                class="glabel"
+                data-i18n="display">
+                Affichage
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="l">
+
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <path
+                            d="M21 12.79A9 9 0 1 1 11.21 3
+                               7 7 0 0 0 21 12.79z">
+                        </path>
+
+                    </svg>
+
+                    <span data-i18n="darkMode">
+                        Mode sombre
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="switch"
+                    id="theme-switch"
+                    onclick="toggleTheme()">
+
+                    <i></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= COMPTE ================= -->
+
+        <div class="settings-group">
+
+            <div
+                class="glabel"
+                data-i18n="account">
+                Compte
+            </div>
+
+
+            <!-- Modifier le profil -->
+
+            <div
+                class="setting-row clickable"
+                onclick="location.href='profile.html'">
+
+                <div class="l">
+
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <path
+                            d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2">
+                        </path>
+
+                        <circle
+                            cx="12"
+                            cy="7"
+                            r="4">
+                        </circle>
+
+                    </svg>
+
+
+                    <span data-i18n="editProfile">
+                        Modifier le profil
+                    </span>
+
+                </div>
+
+
+                <span style="color:var(--ink-soft);">
+                    ›
+                </span>
+
+            </div>
+
+
+            <div class="setting-row clickable" onclick="location.href='aide.html'">
+                <div class="l">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.5 9a2.5 2.5 0 1 1 4.5 1.5c-.8.7-2 1.2-2 2.5" />
+                        <path d="M12 17h.01" />
+                    </svg>
+                    <span>Aide et assistance</span>
+                </div>
+                <span aria-hidden="true">&rsaquo;</span>
+            </div>
+
+            <!-- Déconnexion -->
+
+            <div class="setting-row clickable" id="adminAccessRow" style="display:none;" onclick="location.href='admin.html'">
+                <div class="l">
+                    <span aria-hidden="true">&#128737;</span>
+                    <span>Espace administrateur</span>
+                </div>
+                <span aria-hidden="true">&rsaquo;</span>
+            </div>
+
+            <button
+                class="btn-logout"
+                id="logoutBtn"
+                data-i18n="logout">
+
+                Se déconnecter
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <div id="navbar"></div>
+
+
+    <script src="../js/navbar-loader.js"></script>
+
+    <!-- Système de traduction -->
+
+    <script src="../js/i18n.js"></script>
+
+
+    <!-- ================= FIREBASE ================= -->
+
+    <script type="module">
+
+        import {
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        import {
+            doc,
+            getDoc
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+        import {
+            auth,
+            db
+        } from "../js/firebase.js";
+
+
+        console.log(
+            "⚙️ Settings Firebase chargé"
+        );
+
+
+        // ==================================================
+        // 👤 PROFIL
+        // ==================================================
+
+        onAuthStateChanged(
+            auth,
+            async (user) => {
+
+                if (!user) {
+
+                    console.log(
+                        "🔒 Aucun utilisateur connecté"
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                console.log(
+                    "🔓 Utilisateur connecté :",
+                    user.uid
+                );
+
+
+                try {
+
+                    const userRef =
+                        doc(
+                            db,
+                            "users",
+                            user.uid
+                        );
+
+
+                    const userSnap =
+                        await getDoc(userRef);
+
+
+                    if (userSnap.exists()) {
+
+                        const data =
+                            userSnap.data();
+
+                        const adminAccessRow =
+                            document.getElementById("adminAccessRow");
+                        if (
+                            adminAccessRow &&
+                            String(data.role || "").trim().toLowerCase() === "admin"
+                        ) {
+                            adminAccessRow.style.display = "flex";
+                        }
+
+
+                        console.log(
+                            "👤 Profil récupéré :",
+                            data
+                        );
+
+
+                        // NOM
+
+                        const nameElement =
+                            document.getElementById(
+                                "profileName"
+                            );
+
+
+                        nameElement.textContent =
+                            data.fullName ||
+                            "Utilisateur";
+
+
+                        // EMAIL
+
+                        const emailElement =
+                            document.getElementById(
+                                "profileEmail"
+                            );
+
+
+                        emailElement.textContent =
+                            data.email ||
+                            user.email;
+
+
+                        // AVATAR
+
+                        const avatarElement =
+                            document.getElementById(
+                                "profileAvatar"
+                            );
+
+
+                        const fullName =
+                            data.fullName ||
+                            "Utilisateur";
+
+
+                        const initials =
+                            fullName
+                                .split(" ")
+                                .filter(
+                                    word =>
+                                        word.length > 0
+                                )
+                                .slice(0, 2)
+                                .map(
+                                    word =>
+                                        word.charAt(0)
+                                )
+                                .join("")
+                                .toUpperCase();
+
+
+                        avatarElement.textContent =
+                            initials || "EG";
+
+
+                    } else {
+
+                        console.log(
+                            "⚠️ Profil Firestore introuvable"
+                        );
+
+
+                        document
+                            .getElementById(
+                                "profileName"
+                            )
+                            .textContent =
+                            "Utilisateur";
+
+
+                        document
+                            .getElementById(
+                                "profileEmail"
+                            )
+                            .textContent =
+                            user.email;
+
+
+                        document
+                            .getElementById(
+                                "profileAvatar"
+                            )
+                            .textContent =
+                            "EG";
+
+                    }
+
+
+                } catch (error) {
+
+                    console.error(
+                        "❌ Erreur récupération profil :",
+                        error
+                    );
+
+                }
+
+            }
+        );
+
+
+        // ==================================================
+        // 🚪 DÉCONNEXION
+        // ==================================================
+
+        const logoutBtn =
+            document.getElementById(
+                "logoutBtn"
+            );
+
+
+        logoutBtn.addEventListener(
+            "click",
+            async () => {
+
+                const confirmation =
+                    confirm(
+                        "Voulez-vous vraiment vous déconnecter ?"
+                    );
+
+
+                if (!confirmation) {
+                    return;
+                }
+
+
+                try {
+
+                    await signOut(auth);
+
+
+                    console.log(
+                        "👋 Utilisateur déconnecté"
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+
+                } catch (error) {
+
+                    console.error(
+                        "❌ Erreur déconnexion :",
+                        error
+                    );
+
+
+                    alert(
+                        "Impossible de vous déconnecter."
+                    );
+
+                }
+
+            }
+        );
+
+
+        // ==================================================
+        // 🌙 MODE SOMBRE
+        // ==================================================
+
+        const themeSwitch =
+            document.getElementById(
+                "theme-switch"
+            );
+
+
+        let darkOn =
+            localStorage.getItem(
+                "theme"
+            ) === "dark";
+
+
+        if (darkOn) {
+
+            document.documentElement.dataset.theme = "dark";
+
+            document.body.classList.add(
+                "dark"
+            );
+
+            themeSwitch.classList.add(
+                "on"
+            );
+
+        }
+
+
+        window.toggleTheme =
+            function () {
+
+                darkOn =
+                    !darkOn;
+
+
+                document.body.classList.toggle(
+                    "dark",
+                    darkOn
+                );
+
+
+                themeSwitch.classList.toggle(
+                    "on",
+                    darkOn
+                );
+
+
+                if (window.EGoreeTheme) {
+                    window.EGoreeTheme.set(darkOn ? "dark" : "light");
+                } else {
+                    localStorage.setItem("theme", darkOn ? "dark" : "light");
+                    document.documentElement.dataset.theme = darkOn ? "dark" : "light";
+                }
+
+            };
+
+
+        // ==================================================
+        // 🌍 LANGUE
+        // ==================================================
+
+        window.setLang =
+            function (lang) {
+
+                if (
+                    !window.EGoreeI18n
+                ) {
+
+                    console.error(
+                        "❌ i18n.js n'est pas chargé."
+                    );
+
+                    return;
+
+                }
+
+
+                // Changer la langue
+                window.EGoreeI18n
+                    .setLanguage(lang);
+
+
+                // Mettre à jour le bouton actif
+
+                document
+                    .querySelectorAll(
+                        ".lang-chip"
+                    )
+                    .forEach(
+                        chip => {
+
+                            chip.classList.toggle(
+                                "active",
+                                chip.dataset.lang ===
+                                lang
+                            );
+
+                        }
+                    );
+
+
+                console.log(
+                    "🌍 Langue sélectionnée :",
+                    lang
+                );
+
+            };
+
+
+        // ==================================================
+        // ❓ AIDE
+        // ==================================================
+
+        window.showHelp =
+            function () {
+
+                const lang =
+                    window.EGoreeI18n
+                        ? window.EGoreeI18n
+                            .getCurrentLanguage()
+                        : "fr";
+
+
+                const messages = {
+
+                    fr:
+                        "Aide & assistance",
+
+                    en:
+                        "Help & assistance",
+
+                    wo:
+                        "Ndimbal ak wallu"
+
+                };
+
+
+                alert(
+                    messages[lang]
+                );
+
+            };
+
+
+        // ==================================================
+        // 🌍 INITIALISATION LANGUE
+        // ==================================================
+
+        const currentLanguage =
+            window.EGoreeI18n
+                ? window.EGoreeI18n
+                    .getCurrentLanguage()
+                : "fr";
+
+
+        document
+            .querySelectorAll(
+                ".lang-chip"
+            )
+            .forEach(
+                chip => {
+
+                    chip.classList.toggle(
+                        "active",
+                        chip.dataset.lang ===
+                        currentLanguage
+                    );
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carte - E-Gorée</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/map.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+<header class="top">
+    <script src="../js/theme.js"></script>
+
+    <a href="home.html">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+    </a>
+
+    <h1>Explorer Gorée</h1>
+
+</header>
+
+<div id="map"></div>
+
+<!-- 🧭 BOUTON ITINÉRAIRE -->
+<button
+    id="open-route-btn"
+    class="open-route-btn"
+    type="button">
+
+    🧭
+    <span>Itinéraire</span>
+
+</button>
+<!-- 🧭 PANNEAU ITINÉRAIRE -->
+
+<div
+    id="route-panel"
+    class="route-panel"
+    style="display:none;">
+
+    <div class="route-header">
+
+        <div>
+            <strong>🧭 Itinéraire</strong>
+
+            <small>
+                Choisissez votre départ et votre destination
+            </small>
+        </div>
+
+        <button
+            id="close-route-panel"
+            type="button"
+            class="route-close">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <!-- DÉPART -->
+
+    <div class="route-field">
+
+        <label for="route-origin">
+            📍 Départ
+        </label>
+
+        <select id="route-origin">
+
+            <option value="current">
+                📍 Ma position
+            </option>
+
+            <option value="goree-port">
+                🚢 Embarcadère de Gorée
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- DESTINATION -->
+
+    <div class="route-field">
+
+        <label for="route-destination">
+            🎯 Destination
+        </label>
+
+        <select id="route-destination">
+
+            <option value="">
+                Choisir une destination
+            </option>
+
+            <option value="maison-esclaves">
+                🏛️ Maison des Esclaves
+            </option>
+
+            <option value="memorial">
+                🕊️ Mémorial de Gorée
+            </option>
+
+            <option value="castel">
+                🏰 Castel de Gorée
+            </option>
+
+            <option value="plage">
+                🌊 Plage de Gorée
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <button
+        id="calculate-route-btn"
+        class="route-calculate-btn"
+        type="button">
+
+        🧭 Calculer l'itinéraire
+
+    </button>
+
+
+    <!-- RÉSULTAT -->
+
+    <div
+        id="route-result"
+        class="route-result"
+        style="display:none;">
+
+        <div class="route-info">
+
+            <strong id="route-distance">
+                —
+            </strong>
+
+            <span id="route-duration">
+                —
+            </span>
+
+        </div>
+
+
+        <button
+            id="start-navigation-btn"
+            class="navigation-btn"
+            type="button">
+
+            📍 Démarrer la navigation
+
+        </button>
+
+    </div>
+
+</div>
+
+ <!-- ================= SITES ================= -->
+        <div class="section-title">🌴 À découvrir</div>
+
+<div class="site-grid" id="lieux-container">
+    <p>Chargement des lieux...</p>
+</div>
+
+<div id="navbar"></div>
+
+<script src="../js/navbar-loader.js"></script>
+<script src="../js/i18n.js"></script>
+
+
+<script src="../js/map.js"></script>
+<!-- Google Maps -->
+<script
+    async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&loading=async&callback=initMap">
+</script>
+
+<script type="module">
+
+import { getLieux } from "../js/firestore.js";
+
+const container =
+    document.getElementById("lieux-container");
+
+
+getLieux().then((lieux) => {
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+
+    /* ===============================
+       SITES FIRESTORE
+       =============================== */
+
+    if (lieux.length > 0) {
+
+        lieux.forEach((lieu) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "site-card";
+
+            card.innerHTML = `
+
+                <div class="art">
+
+                    <img
+                        src="${lieu.image || '../assets/images/goree2.webp'}"
+                        alt="${lieu.name || 'Lieu de Gorée'}"
+                    >
+
+                </div>
+
+                <div class="cap">
+                    ${lieu.name || "Lieu de Gorée"}
+                </div>
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    window.location.href =
+                        "map.html";
+
+                }
+            );
+
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+
+    /* ===============================
+       NOUVEAU SITE 1
+       =============================== */
+
+    const museeCard =
+        document.createElement("div");
+
+    museeCard.className =
+        "site-card";
+
+    museeCard.innerHTML = `
+
+        <div class="art">
+
+            <img
+                src="../assets/images/goree2.webp"
+                alt="Musée historique de Gorée"
+            >
+
+        </div>
+
+        <div class="cap">
+            Musée historique de Gorée
+        </div>
+
+    `;
+
+
+    museeCard.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "map.html";
+
+        }
+    );
+
+
+    container.appendChild(museeCard);
+
+
+    /* ===============================
+       NOUVEAU SITE 2
+       =============================== */
+
+    const fortCard =
+        document.createElement("div");
+
+    fortCard.className =
+        "site-card";
+
+    fortCard.innerHTML = `
+
+        <div class="art">
+
+            <img
+                src="../assets/images/goree3.webp"
+                alt="Fort d'Estrées"
+            >
+
+        </div>
+
+        <div class="cap">
+            Fort d'Estrées
+        </div>
+
+    `;
+
+
+    fortCard.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "map.html";
+
+        }
+    );
+
+
+    container.appendChild(fortCard);
+
+})
+.catch((error) => {
+
+    console.error(
+        "❌ Erreur chargement des lieux :",
+        error
+    );
+
+
+    if (container) {
+
+        container.innerHTML = `
+            <p>Impossible de charger les lieux.</p>
+        `;
+
+    }
+
+});
+
+</script>
+</body>
+
+</html>
+

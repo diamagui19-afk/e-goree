@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scanner - E-Gorée</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg, #f6f2e9);
+            color: var(--ink, #222);
+            font-family: "Work Sans", sans-serif;
+        }
+
+        .scanner-page {
+            min-height: 100vh;
+            padding-bottom: 90px;
+        }
+
+        .scanner-header {
+            padding: 24px 20px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .scanner-header h1 {
+            margin: 0;
+            font-family: "Fraunces", serif;
+            font-size: 28px;
+        }
+
+        .back-btn {
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--ink, #222);
+        }
+
+        .scanner-container {
+            width: min(92%, 520px);
+            margin: 0 auto;
+        }
+
+        .scanner-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .08);
+        }
+
+        .scanner-title {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .scanner-title .icon {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .scanner-title h2 {
+            margin: 0 0 6px;
+            font-family: "Fraunces", serif;
+            font-size: 23px;
+        }
+
+        .scanner-title p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        #qr-reader {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #111;
+        }
+
+        #qr-reader video {
+            border-radius: 18px !important;
+        }
+
+        .scanner-status {
+            margin-top: 16px;
+            padding: 13px 15px;
+            border-radius: 12px;
+            background: #f4f4f4;
+            color: #666;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .scanner-status.success {
+            background: #e8f7ed;
+            color: #247a43;
+        }
+
+        .scanner-status.error {
+            background: #fdeaea;
+            color: #b42318;
+        }
+
+        .scanner-status.warning {
+            background: #fff4d6;
+            color: #8a5a00;
+        }
+
+        .ticket-result {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .ticket-result.show {
+            display: block;
+        }
+
+        .result-card {
+            border-radius: 20px;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #ddd;
+        }
+
+        .result-card.valid {
+            border-color: #39a85a;
+        }
+
+        .result-card.invalid {
+            border-color: #d64545;
+        }
+
+        .result-title {
+            text-align: center;
+            font-family: "Fraunces", serif;
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        .result-icon {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 5px;
+        }
+
+        .ticket-number {
+            text-align: center;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .ticket-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .info-box {
+            background: #f7f5ef;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .payment-status {
+            margin-top: 15px;
+            padding: 13px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .payment-paid {
+            background: #e8f7ed;
+            color: #247a43;
+        }
+
+        .payment-pending {
+            background: #fff4d6;
+            color: #8a5a00;
+        }
+
+        .payment-failed {
+            background: #fdeaea;
+            color: #b42318;
+        }
+
+        .validate-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            background: #176b4d;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .validate-btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .scan-again-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 14px;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .used-message {
+            margin-top: 15px;
+            padding: 13px;
+            background: #fdeaea;
+            color: #b42318;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .manual-box {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+        }
+
+        .manual-box label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .manual-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .manual-row input {
+            flex: 1;
+            min-width: 0;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 11px;
+            font-family: "IBM Plex Mono", monospace;
+        }
+
+        .manual-row button {
+            padding: 13px 16px;
+            border: none;
+            border-radius: 11px;
+            background: #222;
+            color: white;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 480px) {
+
+            .ticket-info {
+                grid-template-columns: 1fr;
+            }
+
+            .scanner-header {
+                padding-top: 18px;
+            }
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+
+<body>
+
+<div class="scanner-page">
+
+    <header class="scanner-header">
+    <script src="../js/theme.js"></script>
+
+        <h1>E-Gorée</h1>
+
+        <button
+            class="back-btn"
+            onclick="history.back()">
+
+            ← Retour
+
+        </button>
+
+    </header>
+
+
+    <main class="scanner-container">
+
+        <div class="scanner-card">
+
+            <div class="scanner-title">
+
+                <div class="icon">
+                    📱
+                </div>
+
+                <h2>Scanner un billet</h2>
+
+                <p>
+                    Présentez le QR Code du billet devant la caméra.
+                </p>
+
+            </div>
+
+
+            <!-- SCANNER -->
+
+            <div id="qr-reader"></div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="scanner-status"
+                class="scanner-status">
+
+                🔎 En attente du scan...
+
+            </div>
+
+
+            <!-- RÉSULTAT -->
+
+            <div
+                id="ticket-result"
+                class="ticket-result">
+
+                <div
+                    id="result-card"
+                    class="result-card">
+
+                    <div
+                        id="result-icon"
+                        class="result-icon">
+
+                        🎟️
+
+                    </div>
+
+
+                    <div
+                        id="result-title"
+                        class="result-title">
+
+                        Billet
+
+                    </div>
+
+
+                    <div
+                        id="ticket-number"
+                        class="ticket-number">
+
+                        —
+
+                    </div>
+
+
+                    <div class="ticket-info">
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                Date
+                            </div>
+
+                            <div
+                                id="ticket-date"
+                                class="info-value">
+
+                                —
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                Trajet
+                            </div>
+
+                            <div
+                                id="ticket-route"
+                                class="info-value">
+
+                                —
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                Départ
+                            </div>
+
+                            <div
+                                id="ticket-depart"
+                                class="info-value">
+
+                                —
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                Arrivée
+                            </div>
+
+                            <div
+                                id="ticket-arrivee"
+                                class="info-value">
+
+                                —
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                Passagers
+                            </div>
+
+                            <div
+                                id="ticket-passengers"
+                                class="info-value">
+
+                                —
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                Prix
+                            </div>
+
+                            <div
+                                id="ticket-total"
+                                class="info-value">
+
+                                —
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="payment-status"
+                        class="payment-status">
+
+                        Paiement : —
+
+                    </div>
+
+
+                    <div
+                        id="used-message"
+                        class="used-message hidden">
+
+                        🚫 Ce billet a déjà été utilisé.
+
+                    </div>
+
+
+                    <button
+                        id="validate-btn"
+                        class="validate-btn">
+
+                        ✓ Valider l'embarquement
+
+                    </button>
+
+
+                    <button
+                        id="scan-again-btn"
+                        class="scan-again-btn">
+
+                        📷 Scanner un autre billet
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECHERCHE MANUELLE -->
+
+            <div class="manual-box">
+
+                <label for="manual-ticket-id">
+
+                    Ou entrer le numéro du billet
+
+                </label>
+
+                <div class="manual-row">
+
+                    <input
+                        type="text"
+                        id="manual-ticket-id"
+                        placeholder="GR-XXXXXX"
+                        autocomplete="off"
+                    >
+
+                    <button id="manual-search-btn">
+
+                        Rechercher
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<div id="navbar"></div>
+
+
+<script src="../js/navbar-loader.js"></script>
+
+<!-- Système de traduction -->
+<script src="../js/i18n.js"></script>
+
+<!-- Librairie scanner QR -->
+
+<script
+    src="https://unpkg.com/html5-qrcode"
+    type="text/javascript">
+</script>
+
+
+<!-- Scanner E-Gorée -->
+
+<script
+    type="module"
+    src="../js/scanner.js">
+</script>
+
+</body>
+
+</html>

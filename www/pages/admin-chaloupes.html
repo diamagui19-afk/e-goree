@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billets des chaloupes | E-Gorée</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-chaloupes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div>
+            <span class="admin-badge">ADMINISTRATION</span>
+            <h1>Billets des chaloupes</h1>
+            <p>Billets achetés et demandes d’annulation</p>
+        </div>
+        <a class="logout-btn" href="admin.html">← Retour au tableau de bord</a>
+    </header>
+
+    <main class="admin-container admin-chaloupes-page">
+        <section class="ticket-toolbar admin-card">
+            <div>
+                <h2>Réservations</h2>
+                <p id="ticketsStatus" role="status" aria-live="polite">Chargement des billets…</p>
+            </div>
+            <label for="ticketFilter">Afficher
+                <select id="ticketFilter">
+                    <option value="all">Tous les billets</option>
+                    <option value="paid">Billets achetés</option>
+                    <option value="requested">Annulations à traiter</option>
+                    <option value="cancelled">Billets annulés</option>
+                </select>
+            </label>
+        </section>
+        <section id="adminTicketsList" class="admin-tickets-list" aria-live="polite"></section>
+        <a class="primary-btn departures-link" href="admin-departs.html">Gérer les départs programmés</a>
+    </main>
+
+    <script type="module" src="../js/admin-chaloupes.js"></script>
+    <script type="module" src="../js/admin-guard.js"></script>
+</body>
+</html>

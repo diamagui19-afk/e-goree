@@ -1,0 +1,359 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:#f8f5f0;
+
+    min-height:100vh;
+
+}
+
+.login-page{
+    position:relative;
+    min-height:100vh;
+    min-height:100dvh;
+    overflow-y:auto;
+    background:#f8f5f0;
+}
+
+/* ===========================
+    IMAGE
+=========================== */
+
+.top-image,
+.header-image{
+
+    width:100%;
+
+    height:clamp(250px, 42vh, 390px);
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:#9a5b31;
+
+}
+
+.top-image img,
+.header-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center 48%;
+
+}
+
+.header-image::after{
+    content:"";
+    position:absolute;
+    inset:45% 0 0;
+    background:linear-gradient(transparent,rgba(67,37,19,.3));
+
+}
+
+/* ===========================
+      CARTE
+=========================== */
+
+.login-card{
+
+    width:100%;
+
+    max-width:460px;
+
+    position:relative;
+    z-index:1;
+    margin:-48px auto 24px;
+
+    background:#fff;
+
+    border:1px solid rgba(126,81,49,.12);
+    border-radius:28px;
+
+    padding:30px clamp(22px, 6vw, 35px);
+
+    box-shadow:0 -8px 30px rgba(91,55,30,.12);
+
+}
+
+.login-card h1{
+
+    color:#7a4928;
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+.login-card p{
+
+    margin-top:8px;
+
+    color:#666;
+
+    margin-bottom:30px;
+
+}
+
+/* ===========================
+      INPUTS
+=========================== */
+
+.input-box{
+
+    display:flex;
+
+    align-items:center;
+
+    background:#f3f4f6;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+}
+
+.input-box i,
+.input-box ion-icon{
+
+    color:#8d5524;
+
+    font-size:18px;
+
+}
+
+.input-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    margin-left:12px;
+
+    font-size:16px;
+
+}
+
+.eye{
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+     MOT DE PASSE
+=========================== */
+
+.forgot{
+
+    display:block;
+
+    text-align:right;
+
+    text-decoration:none;
+
+    color:#8d5524;
+
+    font-size:14px;
+
+    margin-bottom:25px;
+
+}
+
+/* ===========================
+      BOUTONS
+=========================== */
+
+button{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    border-radius:15px;
+
+}
+
+/* Connexion */
+
+.login-btn{
+
+    background:#8d5524;
+
+    color:white;
+
+    padding:16px;
+
+}
+
+.login-btn:hover{
+
+    background:#70401f;
+
+}
+
+/* Séparateur */
+
+.separator{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:28px 0;
+
+    color:#888;
+
+    font-size:14px;
+
+}
+
+.separator::before,
+
+.separator::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#ddd;
+
+}
+
+.separator span{
+
+    margin:0 15px;
+
+}
+
+/* Scanner */
+
+.scan-btn{
+
+    padding:16px;
+
+    background:#E9C46A;
+
+    color:#222;
+
+    margin-bottom:15px;
+
+}
+
+.scan-btn:hover{
+
+    background:#d8b45f;
+
+}
+
+/* Google */
+
+.google-btn{
+
+    padding:16px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    color:#444;
+
+}
+
+.google-btn:hover{
+
+    background:#f6f6f6;
+
+}
+
+/* ===========================
+     BAS DE PAGE
+=========================== */
+
+.bottom{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#555;
+
+}
+
+.bottom a{
+
+    color:#8d5524;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+}
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media(max-width:600px){
+
+.header-image,
+.top-image{
+    height:clamp(235px, 37vh, 310px);
+}
+
+.login-card{
+
+width:calc(100% - 28px);
+padding:24px 20px;
+
+}
+
+.login-card h1{
+
+font-size:28px;
+
+}
+
+.options{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.options a{color:#8d5524;font-size:13px;}
+
+.register{ text-align:center; font-size:14px; }
+.register a{color:#8d5524;font-weight:700;text-decoration:none;}
+
+}

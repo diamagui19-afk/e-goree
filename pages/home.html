@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil | E-Gorée</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+    <!-- ================= TOP BAR ================= -->
+    <div class="topbar">
+        <img class="home-logo" src="../assets/images/logo.png" alt="E-Gorée Logo">
+       <div class="icon-group">
+
+    <!-- 🔎 RECHERCHE -->
+    <button
+        class="icon-btn"
+        id="searchBtn"
+        type="button"
+        aria-label="Rechercher">
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+
+            <circle
+                cx="11"
+                cy="11"
+                r="7"/>
+
+            <line
+                x1="21"
+                y1="21"
+                x2="16.65"
+                y2="16.65"/>
+
+        </svg>
+
+    </button>
+
+
+    <!-- 🔔 NOTIFICATIONS -->
+    <button
+        class="icon-btn"
+        id="notificationBtn"
+        type="button"
+        aria-label="Notifications">
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+
+            <path
+                d="M18 8a6 6 0 0 0-12 0
+                   c0 7-3 9-3 9h18s-3-2-3-9"/>
+
+            <path
+                d="M13.73 21a2 2 0 0 1-3.46 0"/>
+
+        </svg>
+
+        <span
+            class="dot-badge"
+            id="notificationBadge">
+        </span>
+
+    </button>
+
+</div>
+    </div>
+
+    <div class="scroll-area">
+
+        <!-- ================= SLIDER ================= -->
+        <div class="slider" id="home-slider">
+            <div class="slide active" style="background:linear-gradient(135deg,#E1673D,#B5541B);">
+                <img class="slide-img" src="../assets/images/goree3.webp" alt="Maison des Esclaves">
+                <div class="slide-caption">statues de la liberation de l'Esclavage</div>
+            </div>
+            <div class="slide" style="background:linear-gradient(135deg,#5C8A3A,#3E6427);">
+                <img class="slide-img" src="../assets/images/goree2.webp" alt="Ruelles ocres de l'île">
+                <div class="slide-caption">Maison des Esclaves</div>
+            </div>
+            <div class="slide" style="background:linear-gradient(135deg,#1E3A4C,#3D6B84);">
+                <img class="slide-img" src="../assets/images/goree1.webp" alt="Fort d'Estrées">
+                <div class="slide-caption">Fort d'Estrées</div>
+            </div>
+            <div class="slide" style="background:linear-gradient(135deg,#D9A441,#B5541B);">
+                <img class="slide-img" src="../assets/images/chaloupe.webp" alt="Le port et ses chaloupes">
+                <div class="slide-caption">Le port et ses chaloupes</div>
+            </div>
+            <div class="slide-dots" id="home-dots"></div>
+        </div>
+
+        <!-- ================= HISTOIRE ================= -->
+        <div class="section-title">📜 Histoire de Gorée</div>
+        <p class="history-text">
+            Située face à Dakar, l'île de Gorée fut du XVe au XIXe siècle l'un des plus grands comptoirs
+            de la traite négrière sur la côte africaine. Portugais, Néerlandais, Anglais puis Français s'y
+            succédèrent, laissant des maisons ocres et corail à balcons de bois qui bordent encore ses ruelles
+            sans voitures. Classée patrimoine mondial de l'UNESCO en 1978, elle abrite la célèbre
+            Maison des Esclaves et sa « porte du voyage sans retour », devenue un lieu de mémoire visité
+            par le monde entier. Aujourd'hui, Gorée est un lieu de culture et d'histoire, où les visiteurs peuvent explorer ses musées, ses galeries d'art et ses sites historiques, tout en profitant de la beauté naturelle de l'île et de ses plages.La Maison des Esclaves, a été construite par les Hollandais en 1776. C'est la dernière esclaverie existante à Gorée, la première ayant été bâtie par les Portugais, premiers européens à venir sur l'île en 1444.
+
+C'est à partir de 1960 et grâce à la détermination de Boubacar Joseph Ndiaye, le premier conservateur de la Maison des Esclaves, que l'attention des médias, des gouvernants et des organismes nationaux  a été attisée. L'organisation du premier Festival mondial des Arts nègres en 1966, a permis de la sortir de l'anonymat.
+
+En 1975 Gorée est inscrite sur l'inventaire des monuments historiques du Sénégal et en 1978 sur la liste du Patrimoine Mondial.
+
+Sous l'égide de l'UNESCO, un timbre français consacré à la Maison des Esclaves est émis en 1980 dans la série « Patrimoine mondial ».
+
+En 1990 celle-ci est restaurée avec l'aide de l'UNESCO, ainsi que de nombreux organismes — dont la fondation France Libertés — et des fonds privés.
+
+Cette consécration internationale lui a conféré une apparence de légitimité et l organisation onusienne est allée jusqu'à la qualifier de « centre historique du commerce triangulaire », la désignant comme « un lieu hautement symbolique de l’histoire des peuples »
+
+La Maison des esclaves de Gorée est aussi un lieu de mémoire touristique. Chaque jour, à l'exception du lundi, les touristes se pressent à l'entrée. Leur nombre est estimé à 500 par jour, ce qui est considérable si l’on sait par ailleurs que le plus grand parc national du Sénégal, le Niokolo-Koba, n en reçoit que 3 000 par an environ.</b>
+        </p>
+
+        <!-- ================= AUDIOGUIDE ================= -->
+        <div class="audioguide-card">
+            <button class="play-btn" id="ag-btn" onclick="toggleAudioguide()">
+                <svg id="ag-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+            </button>
+            <div class="ag-info">
+                <div class="t">Audioguide — L'histoire de Gorée</div>
+                <div class="s" id="ag-status">3 min 40 · Français</div>
+                <div class="ag-progress"><i id="ag-fill"></i></div>
+            </div>
+        </div>
+
+       <script>
+/* =====================================================
+   🎧 AUDIOGUIDE E-GORÉE
+   FR 🇫🇷 | EN 🇬🇧 | WO 🟢
+   ===================================================== */
+
+let agPlaying = false;
+let agTimer = null;
+
+
+/* ===============================
+   TEXTES AUDIO
+   =============================== */
+
+const audioguideTexts = {
+
+    fr: {
+        text: `
+        Située face à Dakar, l'île de Gorée fut du
+        quinzième au dix-neuvième siècle l'un des plus
+        grands comptoirs de la traite négrière sur la
+        côte africaine.
+
+        Classée patrimoine mondial de l'Unesco en mille
+        neuf cent soixante-dix-huit, elle abrite la célèbre
+        Maison des Esclaves et sa porte du voyage sans
+        retour, devenue un lieu de mémoire visité par le
+        monde entier.
+        `,
+
+        lang: "fr-FR",
+        label: "3 min 40 · Français"
+    },
+
+
+    en: {
+        text: `
+        Located opposite Dakar, Gorée Island was from
+        the fifteenth to the nineteenth century one of
+        the largest trading centers of the slave trade
+        on the African coast.
+
+        Listed as a UNESCO World Heritage Site in
+        nineteen seventy-eight, it is home to the famous
+        House of Slaves and its Door of No Return,
+        which has become a place of remembrance visited
+        by people from all over the world.
+        `,
+
+        lang: "en-US",
+        label: "3 min 40 · English"
+    },
+
+
+    wo: {
+        text: `
+        Gorée nekk na ci kanam Dakar.
+        Ci diggante xarnu bu fukk ak juróom benn ak
+        xarnu bu fukk ak juróom ñeent, Gorée doon na
+        benn ci barab yi gën a am solo ci jaay-jaay
+        jaam yi ci wetu Afrik.
+
+        Gorée bokk na ci patrimoine mondial UNESCO
+        ci atum 1978. Foofu la Kër gi ñu jële jaam yi
+        ak bunt bi ñuy wax bunt bu kenn dul dellusi
+        nekk. Dëkk bi dees na ko gëna xam ni barab
+        bu am solo ci jaar-jaaru jaam yi.
+        `,
+
+        lang: "fr-SN",
+        label: "3 min 40 · Wolof"
+    }
+
+};
+
+
+/* ===============================
+   🌍 LANGUE ACTUELLE
+   =============================== */
+
+function getAudioLanguage() {
+
+    return localStorage.getItem(
+        "egoree-language"
+    ) || "fr";
+
+}
+
+
+/* ===============================
+   🔄 METTRE À JOUR LE STATUT
+   =============================== */
+
+function updateAudioguideLanguage() {
+    const status = document.getElementById("ag-status");
+    if (!status) return;
+
+    const language = localStorage.getItem("egoree-language") || "fr";
+    status.textContent = language === "wo"
+        ? "Wolof"
+        : language === "en"
+            ? "English"
+            : "FranÃ§ais";
+}
+
+
+/* ===============================
+   ▶️ / ⏸ AUDIOGUIDE
+   =============================== */
+
+function toggleAudioguide() {
+
+    const icon =
+        document.getElementById("ag-icon");
+
+    const status =
+        document.getElementById("ag-status");
+
+    const fill =
+        document.getElementById("ag-fill");
+
+
+    if (!icon || !status || !fill) {
+        return;
+    }
+
+
+    /* ==========================
+       PAUSE
+       ========================== */
+
+    if (agPlaying) {
+
+        agPlaying = false;
+
+
+        icon.innerHTML = `
+            <polygon points="6,4 20,12 6,20"/>
+        `;
+
+
+        updateAudioguideLanguage();
+
+
+        clearInterval(agTimer);
+
+        fill.style.width = "0%";
+
+
+        if ("speechSynthesis" in window) {
+
+            window.speechSynthesis.cancel();
+
+        }
+
+        return;
+    }
+
+
+    /* ==========================
+       LECTURE
+       ========================== */
+
+    const language =
+        getAudioLanguage();
+
+
+    const audio =
+        audioguideTexts[language] ||
+        audioguideTexts.fr;
+
+
+    agPlaying = true;
+
+
+    /* Icône pause */
+
+    icon.innerHTML = `
+        <rect
+            x="6"
+            y="5"
+            width="4"
+            height="14"/>
+
+        <rect
+            x="14"
+            y="5"
+            width="4"
+            height="14"/>
+    `;
+
+
+    status.textContent =
+        language === "en"
+            ? "Playing..."
+            : language === "wo"
+                ? "Mu ngi déglu..."
+                : "Lecture en cours…";
+
+
+    /* ==========================
+       SYNTHÈSE VOCALE
+       ========================== */
+
+    if ("speechSynthesis" in window) {
+
+        const speech =
+            new SpeechSynthesisUtterance(
+                audio.text
+            );
+
+
+        speech.lang =
+            audio.lang;
+
+
+        speech.rate =
+            0.95;
+
+
+        speech.pitch =
+            1;
+
+
+        speech.volume =
+            1;
+
+
+        window.speechSynthesis.cancel();
+
+
+        speech.onend = () => {
+
+            if (agPlaying) {
+
+                stopAudioguide();
+
+            }
+
+        };
+
+
+        speech.onerror = () => {
+
+            stopAudioguide();
+
+        };
+
+
+        window.speechSynthesis.speak(
+            speech
+        );
+
+    }
+
+
+    /* ==========================
+       BARRE DE PROGRESSION
+       ========================== */
+
+    let progress = 0;
+
+
+    clearInterval(agTimer);
+
+
+    agTimer =
+        setInterval(() => {
+
+            progress += 100 / 220;
+
+
+            if (progress >= 100) {
+
+                progress = 100;
+
+                clearInterval(
+                    agTimer
+                );
+
+            }
+
+
+            fill.style.width =
+                progress + "%";
+
+        }, 1000);
+
+}
+
+
+/* ===============================
+   ⏹ ARRÊTER AUDIO
+   =============================== */
+
+function stopAudioguide() {
+
+    agPlaying = false;
+
+
+    const icon =
+        document.getElementById("ag-icon");
+
+    const fill =
+        document.getElementById("ag-fill");
+
+
+    if (icon) {
+
+        icon.innerHTML = `
+            <polygon
+                points="6,4 20,12 6,20"/>
+        `;
+
+    }
+
+
+    clearInterval(agTimer);
+
+
+    if (fill) {
+
+        fill.style.width = "0%";
+
+    }
+
+
+    updateAudioguideLanguage();
+
+
+    if ("speechSynthesis" in window) {
+
+        window.speechSynthesis.cancel();
+
+    }
+
+}
+
+
+/* ===============================
+   🌍 INITIALISATION
+   =============================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        updateAudioguideLanguage();
+
+    }
+);
+
+
+/* ===============================
+   🌍 CHANGEMENT DE LANGUE
+   =============================== */
+
+window.addEventListener(
+    "storage",
+    event => {
+
+        if (
+            event.key ===
+            "egoree-language"
+        ) {
+
+            stopAudioguide();
+
+        }
+
+    }
+);
+
+</script>
+
+<script>
+/* Enregistrements locaux : la synthèse vocale du navigateur ne fonctionne pas
+   de façon fiable dans la WebView Android de Capacitor. */
+var agAudioPlayer = null;
+var agAudioLanguage = null;
+var agAudioSources = {
+    fr: "../assets/audio/fr/fr.mp3",
+    en: "../assets/audio/en/ElevenLabs_2026-08-16T20_19_53_Roger - Laid-Back, Casual, Resonant_pre_sp100_s50_sb75_se0_b_m2.mp3",
+    wo: "../assets/audio/wo/ElevenLabs_2026-08-16T20_27_20_Roger - Laid-Back, Casual, Resonant_pre_sp100_s50_sb75_se0_b_m2.mp3"
+};
+
+function updateAudioguideLanguage() {
+    const status = document.getElementById("ag-status");
+    if (!status) return;
+
+    const language = localStorage.getItem("egoree-language") || "fr";
+    status.textContent = language === "wo"
+        ? "Wolof"
+        : language === "en"
+            ? "English"
+            : "Francais";
+}
+
+function setAudioguidePlaying(isPlaying) {
+    const icon = document.getElementById("ag-icon");
+    const button = document.getElementById("ag-btn");
+    if (icon) {
+        icon.innerHTML = isPlaying
+            ? '<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>'
+            : '<polygon points="6,4 20,12 6,20"/>';
+    }
+    if (button) button.setAttribute("aria-label", isPlaying ? "Mettre l’audioguide en pause" : "Écouter l’audioguide");
+    agPlaying = isPlaying;
+}
+
+function toggleAudioguide() {
+    const status = document.getElementById("ag-status");
+    const fill = document.getElementById("ag-fill");
+    if (!status || !fill) return;
+
+    const selectedLanguage = localStorage.getItem("egoree-language") || "fr";
+    const language = agAudioSources[selectedLanguage] ? selectedLanguage : "fr";
+    const languageLabel = language === "wo" ? "Wolof" : language === "en" ? "English" : "French";
+
+    if (!agAudioPlayer || agAudioLanguage !== language) {
+        if (agAudioPlayer) {
+            agAudioPlayer.pause();
+            agAudioPlayer.src = "";
+        }
+        agAudioPlayer = new Audio(new URL(agAudioSources[language], document.baseURI).href);
+        agAudioPlayer.preload = "metadata";
+        agAudioLanguage = language;
+        agAudioPlayer.addEventListener("timeupdate", () => {
+            if (Number.isFinite(agAudioPlayer.duration) && agAudioPlayer.duration > 0) {
+                fill.style.width = `${(agAudioPlayer.currentTime / agAudioPlayer.duration) * 100}%`;
+            }
+        });
+        agAudioPlayer.addEventListener("ended", stopAudioguide);
+        agAudioPlayer.addEventListener("error", () => {
+            setAudioguidePlaying(false);
+            status.textContent = "Impossible de charger cet enregistrement";
+            fill.style.width = "0%";
+        });
+    }
+
+    if (agPlaying) {
+        agAudioPlayer.pause();
+        setAudioguidePlaying(false);
+        status.textContent = `${languageLabel} - en pause`;
+        return;
+    }
+
+    agAudioPlayer.play().then(() => {
+        setAudioguidePlaying(true);
+        status.textContent = `Playing in ${languageLabel}...`;
+    }).catch((error) => {
+        setAudioguidePlaying(false);
+        status.textContent = "Lecture impossible. Vérifie le volume du téléphone.";
+        console.error("Erreur de lecture de l’audioguide :", error);
+    });
+}
+
+function stopAudioguide() {
+    if (agAudioPlayer) {
+        agAudioPlayer.pause();
+        agAudioPlayer.currentTime = 0;
+    }
+    setAudioguidePlaying(false);
+    const fill = document.getElementById("ag-fill");
+    if (fill) fill.style.width = "0%";
+    updateAudioguideLanguage();
+}
+</script>
+
+<!-- Chargement de la barre de navigation -->
+<div id="navbar"></div>
+<script src="../js/i18n.js"></script>
+<script src="../js/cache-manager.js"></script>
+<script src="../js/firebase-error-handler.js"></script>
+<script type="module" src="../js/navbar-loader.js"></script>
+<script type="module" src="../js/auth-guard.js"></script>
+<script type="module" src="../js/home.js"></script>
+<!-- Chargement des lieux depuis Firestore 
+<script type="module">
+    import { getLieux } from "../js/firestore.js";
+
+    const container = document.getElementById("lieux-container");
+
+    getLieux().then((lieux) => {
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        if (lieux.length === 0) {
+            container.innerHTML = `
+                <p>Aucun lieu disponible pour le moment.</p>
+            `;
+            return;
+        }
+
+        lieux.forEach((lieu) => {
+            const card = document.createElement("div");
+            card.className = "site-card";
+
+            card.innerHTML = `
+                <div class="art">
+                    <img 
+                        src="${lieu.image || '../assets/images/goree2.webp'}"
+                        alt="${lieu.name || 'Lieu de Gorée'}"
+                    >
+                </div>
+
+                <div class="cap">
+                    ${lieu.name || "Lieu de Gorée"}
+                </div>
+            `;
+
+            card.addEventListener("click", () => {
+                window.location.href = "map.html";
+            });
+
+            container.appendChild(card);
+        });
+    });-->
+</script>
+<!-- =====================================================
+     🔎 FENÊTRE DE RECHERCHE
+===================================================== -->
+
+<div
+    id="searchModal"
+    class="home-modal">
+
+    <div class="home-modal-box">
+
+        <div class="home-modal-header">
+
+            <h2>Rechercher</h2>
+
+            <button
+                id="closeSearch"
+                type="button">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="search-input-wrap">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2">
+
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="7"/>
+
+                <line
+                    x1="21"
+                    y1="21"
+                    x2="16.65"
+                    y2="16.65"/>
+
+            </svg>
+
+            <input
+                id="homeSearchInput"
+                type="search"
+                placeholder="Maison des Esclaves, fort, plage..."
+                autocomplete="off">
+
+        </div>
+
+
+        <div
+            id="searchResults"
+            class="search-results">
+
+            <div class="search-empty">
+                🔎 Recherchez un lieu de Gorée
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     🔔 FENÊTRE NOTIFICATIONS
+===================================================== -->
+
+<div
+    id="notificationModal"
+    class="home-modal">
+
+    <div class="home-modal-box">
+
+        <div class="home-modal-header">
+
+            <h2>Notifications</h2>
+
+            <button
+                id="closeNotifications"
+                type="button">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="notificationList"
+            class="notification-list">
+
+            <div class="search-empty">
+                Chargement...
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | E-Gorée</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!-- Image du haut -->
+    <div class="header-image">
+        <img src="../assets/images/goree1.webp" alt="Île de Gorée">
+    </div>
+
+    <!-- Vague 
+    <div class="wave"></div> -->
+
+    <!-- Carte de connexion -->
+    <div class="login-card">
+
+        <h1>Bienvenue sur <span>E-Gorée</span></h1>
+
+        <p class="subtitle">
+            Voyagez dans l'histoire,<br>
+            explorez Gorée autrement.
+        </p>
+
+<!-- Email -->
+        <div class="input-box">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input
+                type="email"
+                id="email"
+                placeholder="Adresse e-mail">
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="input-box">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input
+                type="password"
+                id="password"
+                placeholder="Mot de passe">
+        </div>
+
+        <!-- Options -->
+        <div class="options">
+
+            <label>
+
+                <input type="checkbox">
+
+                Se souvenir de moi
+
+            </label>
+
+            <a href="forgot-password.html">
+                Mot de passe oublié ?
+            </a>
+
+        </div>
+
+        <!-- Bouton -->
+        <button class="login-btn" id="loginBtn">
+
+            <ion-icon name="log-in-outline"></ion-icon>
+
+            Se connecter
+
+        </button>
+
+        <!-- Inscription -->
+        <p class="register">
+
+            Pas encore inscrit ?
+
+            <a href="register.html">
+                Créer un compte
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- Ionicons -->
+<script type="module"
+src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script src="../js/i18n.js"></script>
+<!-- JS -->
+<script type="module" src="../js/login.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+/* Shared page surfaces and controls; loaded after each page stylesheet. */
+:root { color: var(--ink); background: var(--background); }
+body {
+    background-color: var(--background) !important;
+    color: var(--ink);
+}
+
+.bottom-nav,
+.card,
+.profile-card,
+.profile-hero,
+.settings-group,
+.setting-row,
+.history-item,
+.ticket-stub,
+.site-card,
+.users-card,
+.admin-card,
+.stat-card,
+.admin-actions button,
+.admin-info,
+.home-modal-box,
+.route-panel,
+.login-card {
+    border-color: var(--line);
+}
+
+.bottom-nav { background: var(--surface); color: var(--ink); }
+.bottom-nav a { color: var(--gray); }
+.bottom-nav a.active { color: var(--terracotta); }
+.admin-header { background: var(--primary-dark); color: #fff; }
+.help-header { background: var(--primary-dark); color: #fff; }
+.header { background: var(--primary-dark); color: #fff; }
+.admin-badge { background: var(--secondary); color: var(--primary-dark); }
+.open-route-btn,
+.primary-btn,
+.report-btn,
+.send-report,
+.category.active,
+.category.selected { background: var(--primary); }
+.top,
+.route-panel,
+.home-modal-box,
+.settings-group,
+.profile-card,
+.card,
+.admin-card,
+.stat-card,
+.users-card { border-color: var(--line); }
+
+.route-btn.primary,
+.route-mode-btn.active,
+.calculate-route-btn,
+.route-btn,
+.navigation-btn,
+.popup-btn,
+.pay-chip.active,
+.btn-primary,
+.play-btn,
+.qty-control button,
+.lang-chip.active,
+.switch.on {
+    background-color: var(--primary);
+}
+
+.route-btn.primary,
+.calculate-route-btn,
+.route-btn,
+.navigation-btn,
+.popup-btn,
+.btn-primary,
+.play-btn,
+.qty-control button,
+.lang-chip.active {
+    color: #fff;
+}
+
+:root[data-theme="dark"] body,
+body.dark {
+    background-color: var(--background) !important;
+    color: var(--ink) !important;
+}
+
+:root[data-theme="dark"] .topbar,
+:root[data-theme="dark"] .top,
+:root[data-theme="dark"] .billet-header,
+:root[data-theme="dark"] .admin-header,
+:root[data-theme="dark"] .home-modal-box,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .profile-card,
+:root[data-theme="dark"] .profile-hero,
+:root[data-theme="dark"] .settings-group,
+:root[data-theme="dark"] .setting-row,
+:root[data-theme="dark"] .history-item,
+:root[data-theme="dark"] .ticket-stub,
+:root[data-theme="dark"] .site-card,
+:root[data-theme="dark"] .users-card,
+:root[data-theme="dark"] .admin-card,
+:root[data-theme="dark"] .stat-card,
+:root[data-theme="dark"] .admin-actions button,
+:root[data-theme="dark"] .admin-info,
+:root[data-theme="dark"] .booking-summary,
+:root[data-theme="dark"] .qty-control,
+:root[data-theme="dark"] .route-panel,
+:root[data-theme="dark"] .map-info,
+:root[data-theme="dark"] .faq-item,
+:root[data-theme="dark"] .faq-answer,
+:root[data-theme="dark"] .contact-card,
+:root[data-theme="dark"] .category,
+:root[data-theme="dark"] .modal-card,
+:root[data-theme="dark"] .users-count-card,
+:root[data-theme="dark"] .search-result,
+:root[data-theme="dark"] .notification-item {
+    background-color: var(--surface) !important;
+    color: var(--ink) !important;
+    border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .topbar h1,
+:root[data-theme="dark"] .billet-header h1,
+:root[data-theme="dark"] .section-title,
+:root[data-theme="dark"] .glabel,
+:root[data-theme="dark"] .admin-info h2,
+:root[data-theme="dark"] .admin-menu h2,
+:root[data-theme="dark"] .setting-row,
+:root[data-theme="dark"] .ticket-details .val,
+:root[data-theme="dark"] .history-item .txt .r,
+:root[data-theme="dark"] .home-modal-header h2 {
+    color: var(--ink) !important;
+}
+
+:root[data-theme="dark"] .history-text,
+:root[data-theme="dark"] .help-intro,
+:root[data-theme="dark"] .faq-question,
+:root[data-theme="dark"] .faq-answer,
+:root[data-theme="dark"] .contact-card,
+:root[data-theme="dark"] .users-heading,
+:root[data-theme="dark"] .users-toolbar,
+:root[data-theme="dark"] .users-table,
+:root[data-theme="dark"] .admin-container,
+:root[data-theme="dark"] .departure-info,
+:root[data-theme="dark"] .admin-info,
+:root[data-theme="dark"] .profile-card .mail,
+:root[data-theme="dark"] .setting-row .l,
+:root[data-theme="dark"] .ticket-details .lab,
+:root[data-theme="dark"] .history-item .txt .m,
+:root[data-theme="dark"] .admin-actions small,
+:root[data-theme="dark"] .admin-info p,
+:root[data-theme="dark"] .price-line {
+    color: var(--ink-soft) !important;
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] .input-box,
+:root[data-theme="dark"] .pay-chip,
+:root[data-theme="dark"] .lang-chip,
+:root[data-theme="dark"] .route-field select,
+:root[data-theme="dark"] .search-input-wrap {
+    background-color: var(--surface-2) !important;
+    color: var(--ink) !important;
+    border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .price-total,
+:root[data-theme="dark"] .booking-summary,
+:root[data-theme="dark"] .admin-info,
+:root[data-theme="dark"] #adminAccessRow {
+    background-color: var(--surface-2) !important;
+}
+
+:root[data-theme="dark"] .login-page,
+:root[data-theme="dark"] .login-card {
+    color: var(--ink);
+}
+
+:root[data-theme="dark"] .login-card,
+:root[data-theme="dark"] .login-card .input-box {
+    background-color: var(--surface) !important;
+}
+
+:root[data-theme="dark"] .top,
+:root[data-theme="dark"] .billet-header,
+:root[data-theme="dark"] .help-header,
+:root[data-theme="dark"] .help-container,
+:root[data-theme="dark"] .admin-container,
+:root[data-theme="dark"] .users-page,
+:root[data-theme="dark"] .home-modal {
+    background-color: var(--background) !important;
+    color: var(--ink) !important;
+}
+
+:root[data-theme="dark"] .admin-header { background: #3a2b20 !important; }
+:root[data-theme="dark"] .help-header,
+:root[data-theme="dark"] .header { background: #3a2b20 !important; color: var(--ink) !important; }
+:root[data-theme="dark"] .login-page { background-color: var(--background) !important; }
+:root[data-theme="dark"] .header-image img { filter: brightness(.72); }
+:root[data-theme="dark"] .open-route-btn,
+:root[data-theme="dark"] .route-btn.primary,
+:root[data-theme="dark"] .route-mode-btn.active,
+:root[data-theme="dark"] .calculate-route-btn,
+:root[data-theme="dark"] .navigation-btn { background: var(--primary) !important; color: #fff !important; }
+
+:root[data-theme="dark"] .availability-message.ok { background: #203a2b !important; color: #a5ddb4 !important; }
+:root[data-theme="dark"] .availability-message.warning { background: #463a20 !important; color: #f1d28c !important; }
+:root[data-theme="dark"] .availability-message.error { background: #482825 !important; color: #ffaaa0 !important; }
+
+/* Catch page-specific hard-coded white/teal surfaces while keeping the layout intact. */
+:root[data-theme="dark"] .container .card,
+:root[data-theme="dark"] .help-intro,
+:root[data-theme="dark"] .help-footer,
+:root[data-theme="dark"] .search-box,
+:root[data-theme="dark"] .category-list,
+:root[data-theme="dark"] .no-results,
+:root[data-theme="dark"] .modal-overlay > .modal-card,
+:root[data-theme="dark"] .departure-item,
+:root[data-theme="dark"] .field input,
+:root[data-theme="dark"] .action-btn,
+:root[data-theme="dark"] .users-table th,
+:root[data-theme="dark"] .users-table td {
+    background-color: var(--surface) !important;
+    color: var(--ink) !important;
+    border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .container h1,
+:root[data-theme="dark"] .container h2,
+:root[data-theme="dark"] .container h3,
+:root[data-theme="dark"] .container p,
+:root[data-theme="dark"] .container li,
+:root[data-theme="dark"] .admin-card h2,
+:root[data-theme="dark"] .admin-card label,
+:root[data-theme="dark"] .departure-date,
+:root[data-theme="dark"] .departure-time {
+    color: var(--ink) !important;
+}
+
+:root[data-theme="dark"] .section-label { color: var(--accent) !important; }
+:root[data-theme="dark"] .primary-btn,
+:root[data-theme="dark"] .report-btn,
+:root[data-theme="dark"] .send-report,
+:root[data-theme="dark"] .category.active,
+:root[data-theme="dark"] .category.selected { background: var(--primary) !important; color: #fff !important; }
+:root[data-theme="dark"] .header .logo span { color: var(--secondary) !important; }
+
+/* Keep controls and links on the shared warm E-Gorée palette. */
+.primary-btn,
+.btn-primary,
+.report-btn,
+.send-report,
+.open-route-btn,
+.calculate-route-btn { background-color: var(--primary) !important; }
+.section-label,
+.answer-link,
+.back-btn { color: var(--primary) !important; }
+.route-panel-header strong,
+.route-mode-btn.active,
+#swap-route { color: var(--primary) !important; }
+.route-btn.primary,
+.route-mode-btn.active,
+.calculate-route-btn,
+.navigation-btn,
+.open-route-btn { background: var(--primary) !important; color: #fff !important; }
+.route-mode-btn.active,
+#swap-route { border-color: var(--primary) !important; }
+.admin-badge { background: var(--secondary) !important; color: var(--primary-dark) !important; }
+.admin-page h1,
+.admin-page h2,
+.admin-page h3,
+.users-page h1,
+.users-page h2 { color: var(--primary-dark); }
+
+:root[data-theme="dark"] .top,
+:root[data-theme="dark"] .topbar,
+:root[data-theme="dark"] .billet-header,
+:root[data-theme="dark"] .admin-header,
+:root[data-theme="dark"] .help-header,
+:root[data-theme="dark"] .header { color: var(--ink) !important; }
+:root[data-theme="dark"] .header .back { color: var(--ink) !important; }
+:root[data-theme="dark"] .route-panel-header strong,
+:root[data-theme="dark"] .admin-page h1,
+:root[data-theme="dark"] .admin-page h2,
+:root[data-theme="dark"] .admin-page h3,
+:root[data-theme="dark"] .users-page h1,
+:root[data-theme="dark"] .users-page h2 { color: var(--ink) !important; }
+:root[data-theme="dark"] .route-mode-btn,
+:root[data-theme="dark"] #close-route-panel,
+:root[data-theme="dark"] #swap-route,
+:root[data-theme="dark"] .route-result,
+:root[data-theme="dark"] .admin-page,
+:root[data-theme="dark"] .users-page,
+:root[data-theme="dark"] .card-header,
+:root[data-theme="dark"] .stats-grid > *,
+:root[data-theme="dark"] .modal-card {
+    background-color: var(--surface) !important;
+    color: var(--ink) !important;
+    border-color: var(--line) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

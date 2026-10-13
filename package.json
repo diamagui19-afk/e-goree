@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@capacitor/android": "^8.4.2",
+    "@capacitor/camera": "^8.2.1",
+    "@capacitor/filesystem": "^8.1.2",
+    "firebase": "^12.17.1",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.4.2"
+  },
+  "name": "egoree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:web": "node scripts/copy-web.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

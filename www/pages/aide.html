@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script src="../js/theme.js"></script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Aide et assistance | E-Gorée</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/aide.css"
+    >
+
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="help-header">
+    <script src="../js/theme.js"></script>
+
+        <a
+            href="settings.html"
+            class="back-btn"
+            aria-label="Retour"
+        >
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
+        <div class="header-title">
+
+            <span class="header-icon">
+                <i class="fa-solid fa-circle-question"></i>
+            </span>
+
+            <div>
+
+                <h1>Aide et assistance</h1>
+
+                <p>
+                    Nous sommes là pour vous aider
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="help-container">
+
+
+        <!-- ================= INTRO ================= -->
+
+        <section class="help-intro">
+
+            <div class="intro-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+
+            <div>
+
+                <h2>
+                    Comment pouvons-nous vous aider ?
+                </h2>
+
+                <p>
+                    Trouvez rapidement une réponse à vos questions
+                    ou contactez notre assistance.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECHERCHE ================= -->
+
+        <section class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="search"
+                id="help-search"
+                placeholder="Rechercher une question..."
+                autocomplete="off"
+            >
+
+            <button
+                id="clear-search"
+                type="button"
+                aria-label="Effacer"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </section>
+
+
+        <!-- ================= CATEGORIES ================= -->
+
+        <div class="category-list">
+
+            <button
+                class="category active"
+                data-category="all"
+            >
+                <i class="fa-solid fa-layer-group"></i>
+                Tout
+            </button>
+
+            <button
+                class="category"
+                data-category="billets"
+            >
+                <i class="fa-solid fa-ticket"></i>
+                Billets
+            </button>
+
+            <button
+                class="category"
+                data-category="paiement"
+            >
+                <i class="fa-solid fa-wallet"></i>
+                Paiement
+            </button>
+
+            <button
+                class="category"
+                data-category="app"
+            >
+                <i class="fa-solid fa-mobile-screen"></i>
+                Application
+            </button>
+
+            <button
+                class="category"
+                data-category="compte"
+            >
+                <i class="fa-solid fa-user"></i>
+                Compte
+            </button>
+
+        </div>
+
+
+        <!-- ================= FAQ ================= -->
+
+        <section class="faq-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        QUESTIONS FRÉQUENTES
+                    </span>
+
+                    <h2>
+                        Les réponses à vos questions
+                    </h2>
+
+                </div>
+
+                <span
+                    id="faq-count"
+                    class="faq-count"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                class="faq-list"
+                id="faq-list"
+            >
+
+
+                <!-- FAQ 1 -->
+
+                <article
+                    class="faq-item"
+                    data-category="billets"
+                    data-search="acheter billet réservation chaloupe billet gorée"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-ticket"></i>
+
+                            Comment acheter un billet ?
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Rendez-vous dans la rubrique
+                            <strong>Billets</strong>, choisissez votre
+                            trajet, la date, l'heure et le nombre de
+                            passagers. Sélectionnez ensuite votre moyen
+                            de paiement puis validez votre réservation.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FAQ 2 -->
+
+                <article
+                    class="faq-item"
+                    data-category="paiement"
+                    data-search="wave paiement payer wave orange money"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-wallet"></i>
+
+                            Quels moyens de paiement sont disponibles ?
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            E-Gorée prévoit notamment l'utilisation
+                            de <strong>Wave</strong> et
+                            <strong>Orange Money</strong> pour faciliter
+                            le paiement de vos billets.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FAQ 3 -->
+
+                <article
+                    class="faq-item"
+                    data-category="billets"
+                    data-search="billet qr code retrouver ticket"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-qrcode"></i>
+
+                            Où retrouver mon billet ?
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Après votre réservation, votre billet est
+                            enregistré dans votre espace
+                            <strong>Billets</strong>. Vous pouvez y
+                            retrouver les informations du trajet ainsi
+                            que votre QR code.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FAQ 4 -->
+
+                <article
+                    class="faq-item"
+                    data-category="billets"
+                    data-search="qr code embarquement scanner billet"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-expand"></i>
+
+                            À quoi sert le QR code ?
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Le QR code présent sur votre billet permet
+                            de vérifier rapidement votre réservation
+                            lors de votre embarquement.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FAQ 5 -->
+
+                <article
+                    class="faq-item"
+                    data-category="app"
+                    data-search="carte itinéraire trouver lieu gorée navigation"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-map-location-dot"></i>
+
+                            Comment utiliser la carte ?
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Ouvrez la rubrique
+                            <strong>Carte</strong> pour explorer les
+                            lieux de Gorée et consulter les itinéraires
+                            disponibles.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FAQ 6 -->
+
+                <article
+                    class="faq-item"
+                    data-category="app"
+                    data-search="audioguide histoire écoute son gorée"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-headphones"></i>
+
+                            Comment utiliser l'audioguide ?
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Depuis les contenus historiques de
+                            l'application, appuyez sur le bouton
+                            <strong>Lecture</strong> pour écouter
+                            l'audioguide.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FAQ 7 -->
+
+                <article
+                    class="faq-item"
+                    data-category="compte"
+                    data-search="mot passe oublié réinitialiser compte connexion"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            J'ai oublié mon mot de passe
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Depuis la page de connexion, appuyez sur
+                            <strong>Mot de passe oublié ?</strong>,
+                            indiquez votre adresse e-mail puis suivez
+                            le lien reçu pour créer un nouveau mot de passe.
+                        </p>
+
+                        <a
+                            href="forgot-password.html"
+                            class="answer-link"
+                        >
+                            Réinitialiser mon mot de passe
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FAQ 8 -->
+
+                <article
+                    class="faq-item"
+                    data-category="compte"
+                    data-search="modifier profil compte informations"
+                >
+
+                    <button
+                        class="faq-question"
+                        type="button"
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-user-pen"></i>
+
+                            Comment modifier mes informations ?
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Accédez à votre profil depuis les paramètres
+                            de l'application afin de consulter ou modifier
+                            les informations disponibles sur votre compte.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <div
+                id="no-results"
+                class="no-results"
+            >
+
+                <i class="fa-solid fa-face-frown"></i>
+
+                <h3>
+                    Aucun résultat
+                </h3>
+
+                <p>
+                    Nous n'avons trouvé aucune réponse correspondant
+                    à votre recherche.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTACT ================= -->
+
+        <section class="contact-section">
+
+            <div class="contact-header">
+
+                <span class="contact-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </span>
+
+                <div>
+
+                    <span>
+                        BESOIN D'AIDE ?
+                    </span>
+
+                    <h2>
+                        Contactez-nous
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+
+                <a
+    href="mailto:supportegoree@gmail.com"
+    class="contact-card"
+>
+
+    <span class="contact-card-icon email">
+        <i class="fa-solid fa-envelope"></i>
+    </span>
+
+    <div>
+        <strong>
+            Envoyer un e-mail
+        </strong>
+
+        <small>
+            supportegoree@gmail.com
+        </small>
+    </div>
+
+    <i class="fa-solid fa-chevron-right"></i>
+
+</a>
+
+
+<a
+    href="tel:+221772552817"
+    class="contact-card"
+>
+
+    <span class="contact-card-icon phone">
+        <i class="fa-solid fa-phone"></i>
+    </span>
+
+    <div>
+        <strong>
+            Appeler l'assistance
+        </strong>
+
+        <small>
+            +221 77 255 28 17
+        </small>
+    </div>
+
+    <i class="fa-solid fa-chevron-right"></i>
+
+</a>
+
+                <a
+                    href="tel:+221000000000"
+                    class="contact-card"
+                >
+
+                    <span class="contact-card-icon phone">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Appeler l'assistance
+                        </strong>
+
+                        <small>
+                            Assistance E-Gorée
+                        </small>
+
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+            <button
+                class="report-btn"
+                id="report-problem"
+                type="button"
+            >
+
+                <i class="fa-solid fa-bug"></i>
+
+                Signaler un problème
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <p class="help-footer">
+
+            E-Gorée · Votre compagnon pour découvrir Gorée
+
+        </p>
+
+    </main>
+
+
+    <!-- ================= MODAL PROBLÈME ================= -->
+
+    <div
+        class="modal"
+        id="report-modal"
+    >
+
+        <div class="modal-overlay"></div>
+
+
+        <div class="modal-card">
+
+            <button
+                class="modal-close"
+                id="close-modal"
+                type="button"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+
+            <span class="modal-icon">
+                <i class="fa-solid fa-bug"></i>
+            </span>
+
+            <h2>
+                Signaler un problème
+            </h2>
+
+            <p>
+                Décrivez le problème rencontré afin que nous
+                puissions améliorer E-Gorée.
+            </p>
+
+
+            <textarea
+                id="problem-text"
+                placeholder="Décrivez votre problème..."
+                rows="5"
+            ></textarea>
+
+
+            <button
+                id="send-report"
+                class="send-report"
+                type="button"
+            >
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Envoyer le signalement
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/i18n.js"></script>
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script src="../js/aide.js"></script>
+
+</body>
+
+</html>

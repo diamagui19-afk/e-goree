@@ -1,0 +1,156 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:var(--font);
+}
+
+body{
+
+    min-height:100vh;
+
+    background:#b85a3c;
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.splash-container{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    width:min(90%, 420px);
+    padding:2rem 1.5rem;
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+.content{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    color:white;
+
+    width:90%;
+
+    max-width:400px;
+
+}
+
+.logo{
+
+    width:min(100%, 400px);
+
+    height:auto;
+
+    animation:float 2.5s ease-in-out infinite;
+
+}
+
+h1{
+
+    margin-top:20px;
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
+
+p{
+
+    margin-top:0px;
+
+    line-height:28px;
+
+    font-size:18px;
+
+}
+
+.loader{
+
+    margin-top:40px;
+
+    height:8px;
+
+    width:100%;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.progress{
+
+    height:100%;
+
+    width:0;
+
+    background:white;
+
+    animation:loading 3s linear forwards;
+
+}
+
+@keyframes loading{
+
+    to{
+
+        width:100%;
+
+    }
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script src="../js/theme.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#183b2a">
+    <title>Utilisateurs | Administration E-Gorée</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-users.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <header class="admin-header">
+    <script src="../js/theme.js"></script>
+        <div>
+            <span class="admin-badge">ADMINISTRATION</span>
+            <h1>E-Gorée</h1>
+            <p>Gestion des utilisateurs</p>
+        </div>
+        <button id="logoutBtn" class="logout-btn" type="button">Déconnexion</button>
+    </header>
+
+    <main class="admin-container users-page">
+        <a class="back-link" href="admin.html">← Retour au tableau de bord</a>
+
+        <section class="users-heading">
+            <div>
+                <p class="eyebrow">COMPTES E-GORÉE</p>
+                <h2>Utilisateurs</h2>
+                <p>Consulte les comptes et leur rôle. Les informations sensibles ne sont pas affichées.</p>
+            </div>
+            <div class="users-count-card" aria-live="polite">
+                <strong id="usersCount">—</strong>
+                <span>comptes</span>
+            </div>
+        </section>
+
+        <section class="users-card" aria-labelledby="usersTitle">
+            <div class="users-toolbar">
+                <h3 id="usersTitle">Liste des comptes</h3>
+                <label class="users-search">
+                    <span class="sr-only">Rechercher un utilisateur</span>
+                    <input id="usersSearch" type="search" placeholder="Rechercher par nom ou e-mail…" autocomplete="off">
+                </label>
+            </div>
+
+            <p id="usersStatus" class="users-status" role="status">Vérification de l’accès…</p>
+
+            <div class="users-table-wrap" hidden>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Rôle</th>
+                            <th scope="col">Créé le</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../js/admin-users.js"></script>
+    <script type="module" src="../js/admin-guard.js"></script>
+</body>
+</html>
